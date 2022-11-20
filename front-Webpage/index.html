@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>海大資工課程導覽系統</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class = "header_left">
+            <a href="#" target="_blank" class="webtitle">資工課程導覽</a>
+            &nbsp;
+            <span class = "school">
+                <a href = "https://www.ntou.edu.tw/" target = "_blank" class="school_link"><img class = "logo_size" src = "imgsrc/ntou.png"></a>
+            </span>
+        </div>
+        <div class="header-right">
+            <a href = "javascript:;" class="selector">所有公告</a>
+            <a href = "javascript:;" class="selector">所有課程</a>
+            <a href = "javascript:;" class="selector">我的課程</a>
+            <a href = "javascript:;" class="selector active">登入/登出</a>
+        </div>
+    </div>
+    <div class="sample-header"></div>
+    <div class = "flex_display">
+        <div class = "left_display">
+            <div class = "bulletin_box">
+                <img class = "notify_logo" src = "https://www.hwadzan.com/wp-content/uploads/2021/06/announcement.jpg">
+                <ul>
+                    <li>bulletin here!</li>
+                    <li>bulletin here!</li>
+                    <li>bulletin here!</li>
+                    <li>bulletin here!</li>
+                    <li>bulletin here!</li>
+                    <li>bulletin here!</li>
+                    <li>bulletin here!</li>
+                </ul>
+                <p><a href = "javascript:;" title = "更多...">更多...</a></p>
+            </div>
+            <div class = "important_box">
+                <img class = "important_logo" src = "https://nptuer.tw//images/icagenda/frontend/images/sads-vivid/sads-placeholder-art/2.png">
+                <ul>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                    <li>important here!</li>
+                </ul>
+            </div>
+        </div>
+        <div class = "right_display">
+            <div class = "course_box">
+                <img class = "course_logo" src = "https://www.wenshan.org.tw/images/hot_%E7%86%B1%E9%96%80%E8%AA%B2%E7%A8%8B.png">
+                <ul>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                    <li>course here!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        <!--
+        <div class="sample-section">
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+                ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. </p>
+
+            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
+                a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+                Vivamus elementum semper nisi. Aenean
+                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
+                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius
+                laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
+
+            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
+                sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
+                tincidunt tempus. Donec vitae sapien ut
+                libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. </p>
+
+            <p>Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
+                bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend
+                sapien. Vestibulum purus quam, scelerisque ut,
+                mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. </p>
+
+            <p>Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et
+                ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis
+                arcu tortor, suscipit eget, imperdiet
+                nec, imperdiet iaculis, ipsum. </p>
+
+            <p>Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.
+                Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat
+                pretium libero. Cras id dui. Aenean ut.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+                ultricies nec, pellentesque eu, pretium
+                quis, sem. Nulla consequat massa quis enim. </p>
+
+            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
+                a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+                Vivamus elementum semper nisi. Aenean
+                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
+                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius
+                laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
+        </div>
+        -->
+    </div>
+    <!--<script src = "banneranimation.js"></script>-->
+</body>
+
+</html>

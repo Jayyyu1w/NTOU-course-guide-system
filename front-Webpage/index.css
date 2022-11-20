@@ -1,0 +1,206 @@
+* {
+    box-sizing: border-box;
+}
+div{display:block;}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px;
+    width: 100%;
+    z-index: 99;
+    background-color: #3a445c;
+}
+.header_left{
+    text-align: center;
+    float: left;
+}
+.header-right {
+    text-align: center;
+    float: right;
+}
+.logo_size{
+    height: 30px;
+    width: 150px;
+}
+.header a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 12px 8px 12px;
+    text-decoration: none;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.webtitle {
+    font-size: 24px;
+    font-weight: bold;
+}
+.school_link{
+    font-size: 16px;
+    padding-top: 8px;
+}
+
+.selector {
+    font-size: 18px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.school > a:hover{
+    color:#CF9E9E;
+}
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+.header_left > a:hover{
+    color:#CF9E9E;
+}
+.header-right > a:hover  {
+    background-color: #ddd;
+    color: black;
+}
+.header a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.sample-header {
+    width: auto;
+    height: 460px;
+    background-image: url("https://www.programing.tw/banner.d55f84a31879e79c72ec.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top 75px right 0;
+    background-attachment: fixed;
+}
+.flex_display{
+    width: 100%;
+    height: 1300px;
+    align-items:flex-start;
+    justify-content: space-around;
+
+}
+.left_display{
+    float:left;
+    width:55%;
+}
+.right_display{
+    float:right;
+    width:44%;
+}
+h1 {
+    font-weight: 500;
+}
+
+h2 {
+    font-weight: 400;
+}
+
+.sample-section-wrap {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #F0F0F0;
+}
+
+.sample-section {
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+}
+.bulletin_box{
+    font-size: 22px;
+    width: 80%;
+    height: 400px;
+    margin: 15% 0 0 20%;
+    box-shadow: 3px 3px 3px 3px #DAD7D7;
+    border-radius: 3px;
+    padding: 40px;
+}
+.bulletin_box a{
+    font-size: 18px;
+    float: right;
+    color: black;
+    text-decoration: none;
+}
+.bulletin_box a:hover{
+    color: #7B7B7B;
+}
+.notify_logo{
+    width: 100px;
+    margin: 5px 0px 0px 10px;
+}
+.important_box{
+    font-size: 22px;
+    width:80%;
+    height: 400px;
+    margin: 1% 0 0 20%;
+    box-shadow: 3px 3px 3px 3px #DAD7D7;
+    border-radius: 3px;
+    padding: 40px;
+}
+.important_logo{
+    width: 100px;
+    margin: 5px 0px 0px 10px;
+}
+.course_box{
+    font-size: 22px;
+    width: 70%;
+    height: 810px;
+    margin: 18.5% 20% 0 0;
+    box-shadow: 3px 3px 3px 3px #DAD7D7;
+    border-radius: 3px;
+    padding: 40px;
+}
+.course_logo{
+    width: 100px;
+    margin: 5px 0px 0px 0px;
+}
+
+@media (max-width: 600px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .left_display{
+        float:none;
+    }
+    .right_display{
+        float:none;
+        margin-left: 20%;
+        margin-right: 0;
+    }
+    .bulletin_box{
+        overflow: visible;
+        max-width: 100%;
+        height: auto;
+    }
+    .important_box{
+        overflow: visible;
+        max-width: 100%;
+        height: auto;
+    }
+    .course_box{
+        overflow: visible;
+
+        max-width: 100%;
+        height: auto;
+    }
+    .header-right {
+        float: none;
+    }
+}
