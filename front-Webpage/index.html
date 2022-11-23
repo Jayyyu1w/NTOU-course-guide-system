@@ -3,128 +3,109 @@
 <html>
 
 <head>
-    <title>海大資工課程導覽系統</title>
-    <link rel="stylesheet" href="index.css">
-    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <title>海大資工課程</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index1.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <div class = "header_left">
-            <a href="#" target="_blank" class="webtitle">資工課程導覽</a>
-            &nbsp;
-            <span class = "school">
-                <a href = "https://www.ntou.edu.tw/" target = "_blank" class="school_link"><img class = "logo_size" src = "imgsrc/ntou.png"></a>
-            </span>
-        </div>
-        <div class="header-right">
-            <a href = "javascript:;" class="selector">所有公告</a>
-            <a href = "javascript:;" class="selector">所有課程</a>
-            <a href = "javascript:;" class="selector">我的課程</a>
-            <a href = "javascript:;" class="selector active">登入/登出</a>
-        </div>
-    </div>
-    <div class="sample-header"></div>
-    <div class = "flex_display">
-        <div class = "left_display">
-            <div class = "bulletin_box">
-                <img class = "notify_logo" src = "https://www.hwadzan.com/wp-content/uploads/2021/06/announcement.jpg">
-                <ul>
-                    <li>bulletin here!</li>
-                    <li>bulletin here!</li>
-                    <li>bulletin here!</li>
-                    <li>bulletin here!</li>
-                    <li>bulletin here!</li>
-                    <li>bulletin here!</li>
-                    <li>bulletin here!</li>
-                </ul>
-                <p><a href = "javascript:;" title = "更多...">更多...</a></p>
+
+    <section id="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container mt-1 mb-1">
+                <a class="navbar-brand fw-bold fs-4" href="#">資工課程導覽</a>
+                <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
+                    <img src="imgsrc/ntou.png" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown link
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class = "important_box">
-                <img class = "important_logo" src = "https://nptuer.tw//images/icagenda/frontend/images/sads-vivid/sads-placeholder-art/2.png">
-                <ul>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                    <li>important here!</li>
-                </ul>
-            </div>
-        </div>
-        <div class = "right_display">
-            <div class = "course_box">
-                <img class = "course_logo" src = "https://www.wenshan.org.tw/images/hot_%E7%86%B1%E9%96%80%E8%AA%B2%E7%A8%8B.png">
-                <ul>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                    <li>course here!</li>
-                </ul>
+        </nav>
+    </section>
+    <section id="banner">
+        <div class="masthead">
+            <div class="container">
+                <div class="row h-100 align-items-center">
+                </div>
             </div>
         </div>
-    </div>
-        <!--
-        <div class="sample-section">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. </p>
-
-            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
-                a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean
-                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
-                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius
-                laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
-
-            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
-                sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-                tincidunt tempus. Donec vitae sapien ut
-                libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. </p>
-
-            <p>Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
-                bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend
-                sapien. Vestibulum purus quam, scelerisque ut,
-                mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. </p>
-
-            <p>Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et
-                ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis
-                arcu tortor, suscipit eget, imperdiet
-                nec, imperdiet iaculis, ipsum. </p>
-
-            <p>Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.
-                Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat
-                pretium libero. Cras id dui. Aenean ut.</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. </p>
-
-            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
-                a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean
-                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
-                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius
-                laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
-        </div>
-        -->
-    </div>
-    <!--<script src = "banneranimation.js"></script>-->
+    </section>
+    <section id="content">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-16">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <!--單列div-->
+                            <div class="col">
+                                <div class="row-md-12">
+                                    <div class="container border row-md-6">
+                                        <div class="bg-secondary row h-100 px-4 mb-4">
+                                            <div class = "text-light fw-bold fs-3">
+                                                重要公告
+                                            </div>
+                                        </div>
+                                        <h2>testing-up!</h2>
+                                    </div>
+                                    <div class="container border row-md-6">
+                                        <div class="bg-secondary row h-100 px-4 mb-4">
+                                            <div class = "text-light fw-bold fs-3">
+                                                重要時程
+                                            </div>
+                                        </div>
+                                        <h2>testing-low!</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!---->
+                        </div>
+                        <div class="col-md-5">
+                            <div class="container border">
+                                <div class="bg-secondary row h-100 px-4 mb-4">
+                                    <div class = "text-light fw-bold fs-3">
+                                        熱門課程
+                                    </div>
+                                </div>
+                                <h2>testing-right!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 </body>
 
 </html>
