@@ -1,0 +1,16 @@
+#fix_content .masthead {
+    min-height: 70px;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#class_info .class_name{
+    border: 2px solid #c0c0c0;
+    width: 60%;
+    margin: auto;
+    padding: 15px 0;
+    border-radius: 2px;
+    position: relative;
+}
