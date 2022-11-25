@@ -1,11 +1,11 @@
-#fix_content .masthead {
-    min-height: 70px;
-    background-color: black;
+#banner .masthead {
+    height: 20vh;
+    min-height: 200px;
+    background-image: url('https://www.programing.tw/banner.d55f84a31879e79c72ec.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-
 #class_info .class_name{
     border: 2px solid #c0c0c0;
     width: 60%;
@@ -13,4 +13,17 @@
     padding: 15px 0;
     border-radius: 2px;
     position: relative;
+}
+
+.sample-section-wrap {
+    position: relative;
+    background-color: white;
+}
+
+.sample-section {
+    position: relative;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
 }
