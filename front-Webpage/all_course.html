@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>海大資工課程</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+
+    <section id="banner">
+        <div class="masthead">
+            <div class="container">
+                <div class="row h-100 align-items-center">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+            <div class="container mt-1 mb-1">
+                <a class="navbar-brand fw-bold fs-4" href="#">資工課程導覽</a>
+                <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
+                    <img src="imgsrc/ntou.png" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown link
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <section id="all_course">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-12 offset-md-1">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="container">
+                                <nav class="navbar navbar-light bg-light">
+                                    <div class="container-fluid">
+                                        <form class="d-flex round-top">
+                                            <input class="form-control me-2" type="search" placeholder="Search"
+                                                aria-label="Search">
+                                            <button class="btn btn-outline-success" type="submit">Search</button>
+                                        </form>
+                                        <span class="radio_group">
+                                            <span class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="exampleRadios"
+                                                    id="exampleRadios1" value="option1" checked>
+                                                <label class="form-check-label" for="exampleRadios1">
+                                                    大一
+                                                </label>
+                                            </span>
+                                            <span class="form-check form-check-inline inline-flex">
+                                                <input class="form-check-input" type="radio" name="exampleRadios"
+                                                    id="exampleRadios2" value="option2">
+                                                <label class="form-check-label" for="exampleRadios2">
+                                                    大二
+                                                </label>
+                                            </span>
+                                            <span class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="exampleRadios"
+                                                    id="exampleRadios3" value="option3">
+                                                <label class="form-check-label" for="exampleRadios3">
+                                                    大三
+                                                </label>
+                                            </span>
+                                            <span class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="exampleRadios"
+                                                    id="exampleRadios4" value="option4">
+                                                <label class="form-check-label" for="exampleRadios4">
+                                                    大四
+                                                </label>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </nav>
+                                <div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">An item</li>
+                                        <li class="list-group-item">A second item</li>
+                                        <li class="list-group-item">A third item</li>
+                                        <li class="list-group-item">A fourth item</li>
+                                        <li class="list-group-item">And a fifth one</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container border">
+                                <h1>hello</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
