@@ -7,6 +7,11 @@
     background-repeat: no-repeat;
 }
 
+.header_font{
+    font-weight:bold;
+    font-size: 28px
+}
+
 .sample-section-wrap {
     position: relative;
     background-color: white;
