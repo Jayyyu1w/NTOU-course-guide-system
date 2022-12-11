@@ -7,20 +7,107 @@
     background-repeat: no-repeat;
 }
 
-.header_font{
-    font-weight:bold;
+.header_font {
+    font-weight: bold;
     font-size: 28px
 }
 
-.sample-section-wrap {
-    position: relative;
-    background-color: white;
+ul {
+    list-style-type: none;
 }
 
-.sample-section {
-    position: relative;
-    max-width: 640px;
+.title_decoration {
+    background: linear-gradient(to right, #233559 0, #233559 10px, #F0F0F0 10px, #F0F0F0 100%);
+    color: black;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#calendar {
     margin-left: auto;
     margin-right: auto;
-    padding: 40px;
+    width: 320px;
+    font-family: 'Lato', sans-serif;
+    user-select: none;
+}
+
+#calendar_weekdays div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#calendar_content,
+#calendar_weekdays,
+#calendar_header {
+    position: relative;
+    width: 320px;
+    overflow: hidden;
+    float: left;
+    z-index: 10;
+}
+
+#calendar_weekdays div,
+#calendar_content div {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #787878;
+}
+
+#calendar_content {
+    -webkit-border-radius: 0px 0px 12px 12px;
+    -moz-border-radius: 0px 0px 12px 12px;
+    border-radius: 0px 0px 12px 12px;
+}
+
+#calendar_content div {
+    float: left;
+}
+
+#calendar_content div:hover {
+    background-color: #F8F8F8;
+}
+
+#calendar_content div.blank {
+    background-color: #E8E8E8;
+}
+
+#calendar_header,
+#calendar_content div.today {
+    zoom: 1;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+
+#calendar_content div.today {
+    color: #FFFFFF;
+}
+
+#calendar_header {
+    width: 100%;
+    height: 37px;
+    text-align: center;
+    background-color: #FF6860;
+    padding: 18px 0;
+    border-radius: 12px 12px 0px 0px;
+}
+
+#calendar_header h1 {
+    font-size: 1.5em;
+    color: #FFFFFF;
+    float: left;
+    width: 70%;
+}
+
+span[class^=icon-chevron] {
+    color: #FFFFFF;
+    float: left;
+    font-weight:bold;
+    font-size: 24px;
+    width: 15%;
+    border-radius: 50%;
+    padding-bottom: 5%;
+    cursor: pointer;
 }

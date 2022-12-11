@@ -7,12 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.js"></script>
 </head>
 
 <body>
@@ -64,7 +63,7 @@
         </nav>
     </section>
     <section id="content">
-        <div class="container mt-5">
+        <div class="container mt-5 mb-5">
             <div class="row">
                 <div class="col-md-16">
                     <div class="row">
@@ -72,32 +71,42 @@
                             <!--單列div-->
                             <div class="col">
                                 <div class="row-md-12">
-                                    <div class="container border row-md-6">
-                                        <div class="bg-secondary row h-100 px-4 mb-4">
-                                            <div class="text-light fw-bold fs-3">
-                                                重要公告
-                                            </div>
+                                    <div class="container row-md-6">
+                                        <div class="title_decoration row h-100 px-4 mb-4">
+                                            重要公告
                                         </div>
-                                        <h2>testing-up!</h2>
+                                        <div id="notification">
+                                            <ul>
+                                                <li v-for="notify in inform">
+                                                    <h3>{{notify.notify_title}}</h3>
+                                                    <p>{{notify.notify_content}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="container border row-md-6">
-                                        <div class="bg-secondary row h-100 px-4 mb-4">
-                                            <div class="text-light fw-bold fs-3">
-                                                重要時程
-                                            </div>
+                                    <div class="container row-md-6 mt-5">
+                                        <div class="title_decoration row h-100 px-4 mb-4">
+                                            重要時程
                                         </div>
-                                        <h2>testing-low!</h2>
+                                        <!--<h2>testing-low!</h2>-->
+                                        <div id="calendar">
+                                            <div id="calendar_header">
+                                                <span class="icon-chevron-left"><</span>
+                                                <h1></h1>
+                                                <span class="icon-chevron-right">></span>
+                                            </div>
+                                            <div id="calendar_weekdays"></div>
+                                            <div id="calendar_content"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <!---->
                         </div>
                         <div class="col-md-5">
-                            <div class="container border">
-                                <div class="bg-secondary row h-100 px-4 mb-4">
-                                    <div class="text-light fw-bold fs-3">
-                                        熱門課程
-                                    </div>
+                            <div class="container">
+                                <div class="title_decoration row h-100 px-4 mb-4">
+                                    熱門課程
                                 </div>
                                 <h2>testing-right!</h2>
                             </div>
@@ -106,55 +115,6 @@
                 </div>
             </div>
     </section>
-    <!--Test-->
-    <div class="sample-section-wrap">
-        <div class="sample-section">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. </p>
-
-            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
-                a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean
-                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
-                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius
-                laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
-
-            <p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
-                sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante
-                tincidunt tempus. Donec vitae sapien ut
-                libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. </p>
-
-            <p>Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget
-                bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend
-                sapien. Vestibulum purus quam, scelerisque ut,
-                mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. </p>
-
-            <p>Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et
-                ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis
-                arcu tortor, suscipit eget, imperdiet
-                nec, imperdiet iaculis, ipsum. </p>
-
-            <p>Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris.
-                Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat
-                pretium libero. Cras id dui. Aenean ut.</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-                ultricies nec, pellentesque eu, pretium
-                quis, sem. Nulla consequat massa quis enim. </p>
-
-            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet
-                a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-                Vivamus elementum semper nisi. Aenean
-                vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
-                lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius
-                laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. </p>
-        </div>
-    </div>
     <script src="index.js"></script>
 </body>
 

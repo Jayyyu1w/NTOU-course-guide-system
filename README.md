@@ -1,4 +1,8 @@
 # DataBase-project
 ## 海大資工課程導覽系統
 
-banner reference: <a href = "https://www.programing.tw/">普羅程式</a>
+使用json-server做測試 :
+
+```
+npm install json-server
+```
