@@ -88,7 +88,25 @@
                                         <div class="title_decoration row h-100 px-4 mb-4">
                                             重要時程
                                         </div>
-                                        <!--<h2>testing-low!</h2>-->
+                                        <div id="calendar">
+                                            <div id="calendar_header" :style="header_css">
+                                                <span class="icon-chevron-left" @click="prevMonth"> < </span>
+                                                <h1>{{getMon()}}&nbsp;&nbsp;&nbsp;{{t}}</h1>
+                                                <span class="icon-chevron-right" @click="nextMonth"> > </span>
+                                            </div>
+                                            <div id="calendar_weekdays">
+                                                <div v-for="wdays in weekdays" :style="default_css">{{wdays}}</div>
+                                            </div>
+                                            <div id="calendar_content">
+                                                <template v-for="eday in monthdays">
+                                                    <div v-if='eday == " "' :style="blank_content"></div>
+                                                    <div v-else-if="checkDays(eday)" :style="today_content">{{eday}}</div>
+                                                    <div v-else :style="default_css">{{eday}}</div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                        <!--
+                                        
                                         <div id="calendar">
                                             <div id="calendar_header">
                                                 <span class="icon-chevron-left"><</span>
@@ -97,7 +115,7 @@
                                             </div>
                                             <div id="calendar_weekdays"></div>
                                             <div id="calendar_content"></div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
