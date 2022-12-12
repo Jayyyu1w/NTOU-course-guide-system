@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>海大資工課程</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+
+    <section id="banner">
+        <div class="masthead">
+            <div class="container">
+                <div class="row h-100 align-items-center">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+            <div class="container mt-1 mb-1">
+                <a class="navbar-brand header_font" href="index.html">資工課程導覽</a>
+                <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
+                    <img src="/front-Webpage/imgsrc/ntou.png" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">首頁</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="all_course.html">所有課程</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="bulletin.html">所有公告</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                (使用者)
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <section id="bulletin">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="text-center">
+                            <h3 class="fw-bolder">所有公告</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="accordion" id="bulletin">
+                            <div class="accordion-item">
+                                <div class="accordion-header"  id="head1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#body1" aria-expanded="false" aria-controls="body1">
+                                        <strong>期中考成績公布</strong>
+                                    </button>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                &nbsp;&nbsp;&nbsp;
+                                                網頁程式設計
+                                            </div>                                           
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                發布者：林大明
+                                            </div>                                            
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                對象：ALL
+                                            </div>                                            
+                                        </div>   
+                                        <div class="col-md-3">
+                                            <div class="text-secondary">
+                                                2022/12/10 15:33
+                                            </div>                                           
+                                        </div>   
+                                    </div>
+                                </div>
+                                <div id="body1" class="accordion-collapse collapse" aria-labelledby="head1" data-bs-parent="#bulletin">
+                                    <div class="accordion-body">
+                                        同學好:附件為期中考成績，如對成績有疑問請寄信詢問助教，謝謝。
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header"  id="head2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#body2" aria-expanded="false" aria-controls="body2">
+                                        <strong>
+                                            12/22(四)上課地點變更
+                                        </strong>
+                                    </button>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                &nbsp;&nbsp;&nbsp;
+                                                演算法
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                發布者：張三
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                對象：ALL
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="text-secondary">
+                                                2022/12/11 16:57
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="body2" class="accordion-collapse collapse" aria-labelledby="head2" data-bs-parent="#bulletin">
+                                    <div class="accordion-body">
+                                        12/22(四)演算法改為在203教室上課謝謝
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header"  id="head3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#body3" aria-expanded="false" aria-controls="body3">
+                                        <strong>期末考注意事項</strong>
+                                    </button>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                &nbsp;&nbsp;&nbsp;
+                                                資料庫系統
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                發布者：李小梅
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                對象：ALL
+                                            </div>                                            
+                                        </div>   
+                                        <div class="col-md-3">
+                                            <div class="text-secondary">
+                                                2022/12/11 09:25
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="body3" class="accordion-collapse collapse" aria-labelledby="head3" data-bs-parent="#bulletin">
+                                    <div class="accordion-body">
+                                        考試規則：<br>
+                                        現場會提供上課投影片、範例程式碼、w3schools下載版 (現場斷網)。<br>
+                                        禁止：與人交談、使用手機或隨身碟，手機請勿放在桌上或發出聲音，違者 0 分計算。<br>
+                                        可帶一本書與一張雙面A4紙進場。<br>
+                                        附件為期中考座位表，如有任何問題請盡速寄信聯繫助教，謝謝！<br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header"  id="head4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#body4" aria-expanded="false" aria-controls="body4">
+                                        <strong>上課延後</strong>
+                                    </button>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                &nbsp;&nbsp;&nbsp;
+                                                網頁程式設計
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                發布者：林大明
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-secondary">
+                                                對象：ALL
+                                            </div>                                            
+                                        </div>   
+                                        <div class="col-md-3">
+                                            <div class="text-secondary">
+                                                2022/12/06 12:31
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="body4" class="accordion-collapse collapse" aria-labelledby="head4" data-bs-parent="#bulletin">
+                                    <div class="accordion-body">
+                                        今日 (12/6) 晚 10 分鐘開始上課，謝謝！
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                              </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="container border">
+                        <h1>hello</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
