@@ -3,10 +3,11 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>海大資工課程</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/front-Webpage/index.css">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js"
@@ -29,7 +30,7 @@
             <div class="container mt-1 mb-1">
                 <a class="navbar-brand header_font" href="index.html">資工課程導覽</a>
                 <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
-                    <img src="imgsrc/ntou.png" width="150" height="30" alt="">
+                    <img src="/front-Webpage/imgsrc/ntou.png" width="150" height="30" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,8 +48,8 @@
                             <a class="nav-link" href="#">所有公告</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="login.html" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 (使用者)
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -75,7 +76,8 @@
                                         <div class="title_decoration row h-100 px-4 mb-4">
                                             重要公告
                                         </div>
-                                        <div id="notification">
+                                        <!--
+                                        <div id="notification"> 
                                             <ul>
                                                 <li v-for="notify in inform">
                                                     <h3>{{notify.notify_title}}</h3>
@@ -83,11 +85,13 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        -->
                                     </div>
                                     <div class="container row-md-6 mt-5">
                                         <div class="title_decoration row h-100 px-4 mb-4">
                                             重要時程
                                         </div>
+                                        <!--
                                         <div id="calendar">
                                             <div id="calendar_header" :style="header_css">
                                                 <span class="icon-chevron-left" @click="prevMonth"> < </span>
@@ -105,17 +109,7 @@
                                                 </template>
                                             </div>
                                         </div>
-                                        <!--
-                                        
-                                        <div id="calendar">
-                                            <div id="calendar_header">
-                                                <span class="icon-chevron-left"><</span>
-                                                <h1></h1>
-                                                <span class="icon-chevron-right">></span>
-                                            </div>
-                                            <div id="calendar_weekdays"></div>
-                                            <div id="calendar_content"></div>
-                                        </div>-->
+                                        -->
                                     </div>
                                 </div>
                             </div>
@@ -132,8 +126,9 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
-    <script src="index.js"></script>
+    <script src="/front-Webpage/banner_scroll.js"></script>
 </body>
 
 </html>

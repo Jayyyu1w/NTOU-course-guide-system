@@ -6,3 +6,6 @@
 ```
 npm install json-server
 ```
+
+Vue3+Vite
+[參考影片](https://youtu.be/rNQIA0Fe9KQ)

@@ -1,0 +1,16 @@
+{
+    "notify": [
+        {
+            "notify_title": "hello world!",
+            "notify_content": "the world"
+        },
+        {
+            "notify_title": "hello taiwan",
+            "notify_content": "This is Taiwan"
+        },
+        {
+            "notify_title": "hello keelung",
+            "notify_content": "This is Keelung"
+        }
+    ]
+}

@@ -7,10 +7,6 @@
     background-repeat: no-repeat;
 }
 
-textarea{
-    resize:none;
-}
-
 .header_font{
     font-weight:bold;
     font-size: 28px
