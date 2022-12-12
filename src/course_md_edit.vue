@@ -1,28 +1,38 @@
 <script>
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
+import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
+import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
+
+MdEditor.config({
+  editorConfig: {
+    languageUserDefined: {
+      'zh-TW': ZH_TW,
+    },
+  },
+});
 
 export default {
   name: 'App',
   components: {
-      MdEditor
+    MdEditor
   },
   data() {
-      return {
-          text: 'Hello md-editor-v3！'
-      }
+    return {
+      text: 'Hello md-editor-v3！'
+    }
   },
   methods: {
-      onUploadImg(files) {
-          console.log('上傳圖片', files)
-      }
+    onUploadImg(files) {
+      console.log('上傳圖片', files)
+    }
   }
 }
 </script>
 
 <template>
   <div id="md-editor">
-      <md-editor v-model="text" @onUploadImg="onUploadImg" />
+    <md-editor language="zh-TW" preview-theme="arknights" v-model="text" @onUploadImg="onUploadImg" />
   </div>
 </template>
 
