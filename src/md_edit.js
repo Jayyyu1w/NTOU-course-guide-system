@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import MdEditorV3 from 'md-editor-v3'
 import App from './course_md_edit.vue'
 
-createApp(App).mount("#md_editor");
+createApp(App).use(MdEditorV3).mount("#md_editor");

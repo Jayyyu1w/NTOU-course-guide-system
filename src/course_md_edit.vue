@@ -19,20 +19,55 @@ export default {
   },
   data() {
     return {
-      text: 'Hello md-editor-v3！'
+      text: 'Hello md-editor-v3！',
+      toobars: ['bold', 'underline', 'italic', 'strikeThrough',
+        'sub', 'sup', 'quote', 'unorderedList', 'orderedList', 'codeRow',
+        'code', 'link', 'image', 'table', 'revoke',
+        'next', 'save', 'pageFullscreen', 'fullscreen',
+        'preview', 'htmlPreview', 'github'],
+      toolbarsExclude: ['image', 'htmlPreview', 'github'],
     }
   },
   methods: {
-    onUploadImg(files) {
-      console.log('上傳圖片', files)
+    onSave: function (v, h) {
+      console.log(v);
+      h.then((html) => {
+        console.log(html);
+      });
+    },
+    onUploadImg: function (files, callback) {
+      console.log(`img upload success! ${files}`);
     }
+    /*const onUploadImg = async (files, callback) => {
+      const res = await Promise.all(
+        files.map((file) => {
+          return new Promise((rev, rej) => {
+            const form = new FormData();
+            form.append('file', file);
+
+            axios
+              .post('/api/img/upload', form, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              })
+              .then((res) => rev(res))
+              .catch((error) => rej(error));
+          });
+        })
+      );
+
+      callback(res.map((item) => item.data.url));
+    };*/
+
   }
 }
 </script>
 
 <template>
-  <div id="md-editor">
-    <md-editor language="zh-TW" preview-theme="arknights" v-model="text" @onUploadImg="onUploadImg" />
+  <div id="md-editor" class="container">
+    <md-editor language="zh-TW" v-model="text" @on-upload-image="onUploadImg" @onSave="onSave"
+      :toolbarsExclude="toolbarsExclude" maxLength=5000 />
   </div>
 </template>
 
@@ -42,6 +77,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 </style>
