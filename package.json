@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.1.7",
     "@vavt/md-editor-extension": "^1.4.0",
     "md-editor-v3": "^2.6.0",
     "vue": "^3.2.45"
