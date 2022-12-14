@@ -9,13 +9,9 @@ export default {
     methods: {
     },
     mounted: function () {
-        axios.get("http://localhost:3000/notify") //發出http請求
+        axios.get("http://localhost/course.php") //發出http請求
             .then((res) => {
-                console.log(res);
-                let limit = 3;
-                for (let i = 0; i < Math.min(res.data.length, limit); i++) {
-                    this.inform.push(res.data[i]);
-                }
+                console.log(res.data);
             })
     },
 }

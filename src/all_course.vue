@@ -13,7 +13,7 @@ export default ({
         }
     },
     created: function () {
-        axios.get("http://localhost:3000/course")
+        axios.get("http://localhost/course.php")
             .then((res) => {
                 this.course_info = res.data;
                 console.log(this.course_info);
@@ -41,7 +41,7 @@ export default ({
             for (let item of this.course_info) {
                 if (this.keyword == "") {
                     this.display_course.push(item);
-                } else if (item.course_name.search(this.keyword) != -1) {
+                } else if (item.name.search(this.keyword) != -1) {
                     this.display_course.push(item);
                 }
             }
@@ -105,7 +105,7 @@ export default ({
                                 <div class="row-md-8 pt-2">
                                     <p>
                                         <span class="h4">
-                                            {{ dis.course_name }}
+                                            {{ dis.name }}
                                         </span>
                                         <span class="semester">
                                             {{ dis.semester }}
@@ -113,7 +113,7 @@ export default ({
                                     </p>
                                 </div>
                                 <div class="row-md-4">
-                                    <div>課號：{{ dis.course_id }}</div>
+                                    <div>課號：{{ dis.course_ID }}</div>
                                     <div>資訊工程學系&nbsp;&nbsp;&nbsp;{{ dis.grade }}&nbsp;&nbsp;&nbsp;{{ dis.class }}</div>
                                     <div>
                                         必選修別：{{ dis.compulsory }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
