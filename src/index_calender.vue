@@ -13,7 +13,7 @@ export default {
             e: new Date(),
             t: new Date().getFullYear(),
             n: new Date().getMonth() + 1,
-            cal_width: 480,
+            cal_width: 450,
             blank_css: {
                 ".blank": "",
             },
@@ -141,7 +141,6 @@ export default {
         }
     },
     mounted: function () {
-
     },
 }
 </script>
@@ -150,9 +149,9 @@ export default {
     <div id="calendar">
         <div id="calendar_header" :style="header_css">
             <span class="icon-chevron-left" @click="prevMonth">
-                &lt </span>
-                    <h1>{{ getMon() }}&nbsp;&nbsp;&nbsp;{{ t }}</h1>
-                    <span class="icon-chevron-right" @click="nextMonth"> > </span>
+                &lt; </span>
+            <h1>{{ getMon() }}&nbsp;&nbsp;&nbsp;{{ t }}</h1>
+            <span class="icon-chevron-right" @click="nextMonth"> > </span>
         </div>
         <div id="calendar_weekdays">
             <div v-for="wdays in weekdays" :style="default_css">{{ wdays }}</div>

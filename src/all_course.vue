@@ -35,16 +35,17 @@ export default ({
                 console.log(this.grade_4);
             })
     },
-    method: {
+    methods: {
         searching: function () {
             this.display_course = [];
-            for(let item of this.course_info){
-                if(this.keyword == ""){
+            for (let item of this.course_info) {
+                if (this.keyword == "") {
                     this.display_course.push(item);
-                }else if(item.course_name.search(this.keyword) != -1){
+                } else if (item.course_name.search(this.keyword) != -1) {
                     this.display_course.push(item);
                 }
             }
+            console.log(this.display_course);
         }
     },
     mounted: function () {
@@ -54,39 +55,45 @@ export default ({
 </script>
 
 <template>
-    <div class="container" id="courses">
-        <form class="d-flex round-top">
-            <input class="form-control me-2" type="search" placeholder="keyword" v-model="keyword" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit" @click="searching">🔍</button>
-        </form>
-        <div class="radio_group my-3">
-            <span class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radiobutton" id="grade1" :value="display_course"
-                    @input="display_course = grade_1" checked>
-                <label class="form-check-label" for="grade1">
-                    大一
-                </label>
-            </span>
-            <span class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radiobutton" id="grade2" :value="display_course"
-                    @input="display_course = grade_2">
-                <label class="form-check-label" for="grade2">
-                    大二
-                </label>
-            </span>
-            <span class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radiobutton" id="grade3" :value="display_course"
-                    @input="display_course = grade_3">
-                <label class="form-check-label" for="grade3">
-                    大三
-                </label>
-            </span>
-            <span class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radiobutton" id="grade4" :value="display_course"
-                    @input="display_course = grade_4">
-                <label class="form-check-label" for="grade4">
-                    大四
-                </label>
+    <div class="container mb-5" id="courses">
+        <p class="title">所有課程</p>
+        <div class="row">
+            <div class="col-md-8">
+                <form class="d-flex round-top">
+                    <input class="form-control me-2" type="search" placeholder="keyword" v-model="keyword"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="button" @click="searching">search</button>
+                </form>
+            </div>
+            <span class="radio_group col-md-4 mt-2">
+                <span class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radiobutton" id="grade1" :value="display_course"
+                        @input="display_course = grade_1" checked>
+                    <label class="form-check-label" for="grade1">
+                        大一
+                    </label>
+                </span>
+                <span class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radiobutton" id="grade2" :value="display_course"
+                        @input="display_course = grade_2">
+                    <label class="form-check-label" for="grade2">
+                        大二
+                    </label>
+                </span>
+                <span class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radiobutton" id="grade3" :value="display_course"
+                        @input="display_course = grade_3">
+                    <label class="form-check-label" for="grade3">
+                        大三
+                    </label>
+                </span>
+                <span class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radiobutton" id="grade4" :value="display_course"
+                        @input="display_course = grade_4">
+                    <label class="form-check-label" for="grade4">
+                        大四
+                    </label>
+                </span>
             </span>
         </div>
         <div>
@@ -134,5 +141,17 @@ export default ({
 
 .semester {
     float: right;
+}
+
+.filter{
+    border-style: initial;
+    border-width: thick;
+}
+
+.title{
+    font-size: 32px;
+    text-align:center;
+    font-weight:bold;
+    margin-bottom: 3%;
 }
 </style>
