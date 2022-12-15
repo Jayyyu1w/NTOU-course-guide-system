@@ -1,7 +1,7 @@
 #banner .masthead {
     height: 20vh;
     min-height: 230px;
-    background-image: url('imgsrc/banner.png');
+    background-image: url('../imgsrc/banner.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
