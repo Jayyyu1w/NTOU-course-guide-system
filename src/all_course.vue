@@ -13,7 +13,7 @@ export default ({
         }
     },
     created: function () {
-        axios.get("http://localhost/course.php")
+        axios.get("https://database--project.000webhostapp.com/course.php")
             .then((res) => {
                 this.course_info = res.data;
                 console.log(this.course_info);
