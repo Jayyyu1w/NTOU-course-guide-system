@@ -6,13 +6,15 @@ export default {
             inform: [],
         }
     },
-    methods: {
-    },
-    mounted: function () {
+    created() {
         axios.get("http://localhost/course.php") //發出http請求
             .then((res) => {
                 console.log(res.data);
             })
+    },
+    methods: {
+    },
+    mounted: function () {
     },
 }
 </script>
