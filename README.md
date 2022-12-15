@@ -12,7 +12,8 @@ Vue3+Vite
 
 ## mysql資料表
 ```
-xampp\htdocs
+使用本地端：xampphtdocs
+使用線上端：https://database--project.000webhostapp.com/
 ```
 | 版本 | 說明 | 備註　|
 | ---- | ---- | ---- |
