@@ -36,45 +36,20 @@ export default {
       console.log(postd);
       axios.post('https://database--project.000webhostapp.com/course_md_edit.php', postd).then((res) => {
         console.log(res);
-      h.then((html) => {
+        h.then((html) => {
           console.log(html);
         })
       });
     },
-    onUploadImg: function (files, callback) {
-      console.log(`img upload success! ${files}`);
-    }
-
-    /*const onUploadImg = async (files, callback) => {
-      const res = await Promise.all(
-        files.map((file) => {
-          return new Promise((rev, rej) => {
-            const form = new FormData();
-            form.append('file', file);
-
-            axios
-              .post('/api/img/upload', form, {
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              })
-              .then((res) => rev(res))
-              .catch((error) => rej(error));
-          });
-        })
-      );
-
-      callback(res.map((item) => item.data.url));
-    };*/
-
+    mounted: function () {
+    },
   }
 }
 </script>
 
 <template>
   <div id="md-editor" class="container">
-    <md-editor language="zh-TW" v-model="text" @on-upload-image="onUploadImg" @onSave="onSave"
-      :toolbarsExclude="toolbarsExclude" maxLength=5000 />
+    <md-editor language="zh-TW" v-model="text" @onSave="onSave" :toolbarsExclude="toolbarsExclude" maxLength=5000 />
   </div>
 </template>
 

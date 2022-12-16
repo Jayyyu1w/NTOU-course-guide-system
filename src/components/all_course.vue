@@ -46,7 +46,10 @@ export default ({
                 }
             }
             console.log(this.display_course);
-        }
+        },
+        changeWeb: function (dis) {
+            window.location.href = `../course_info/course_info.html?course_ID=${dis.course_ID}&class=${dis.class}`;
+        },
     },
     mounted: function () {
 
@@ -98,32 +101,35 @@ export default ({
         </div>
         <div>
             <ul class="list-group course_style" id="course_list">
-                <div v-for="dis in display_course">
-                    <li class="list-group-item" v-if="dis != undefined">
-                        <div class="container">
-                            <div class="col">
-                                <div class="row-md-8 pt-2">
-                                    <p>
-                                        <span class="h4">
-                                            {{ dis.name }}
-                                        </span>
-                                        <span class="semester">
-                                            {{ dis.semester }}
-                                        </span>
-                                    </p>
-                                </div>
-                                <div class="row-md-4">
-                                    <div>課號：{{ dis.course_ID }}</div>
-                                    <div>資訊工程學系&nbsp;&nbsp;&nbsp;{{ dis.grade }}&nbsp;&nbsp;&nbsp;{{ dis.class }}</div>
-                                    <div>
-                                        必選修別：{{ dis.compulsory }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        學分數：{{ dis.credit }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        授課教師：{{ dis.teacher }}
+                <div v-for="dis of display_course">
+                    <div @click="changeWeb(dis)">
+                        <li class="list-group-item" v-if="dis != undefined">
+                            <div class="container">
+                                <div class="col">
+                                    <div class="row-md-8 pt-2">
+                                        <p>
+                                            <span class="h4">
+                                                {{ dis.name }}
+                                            </span>
+                                            <span class="semester">
+                                                {{ dis.semester }}
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div class="row-md-4">
+                                        <div>課號：{{ dis.course_ID }}</div>
+                                        <div>資訊工程學系&nbsp;&nbsp;&nbsp;{{ dis.grade }}&nbsp;&nbsp;&nbsp;{{ dis.class }}
+                                        </div>
+                                        <div>
+                                            必選修別：{{ dis.compulsory }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            學分數：{{ dis.credit }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            授課教師：{{ dis.teacher }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    </div>
                 </div>
             </ul>
         </div>
@@ -143,15 +149,15 @@ export default ({
     float: right;
 }
 
-.filter{
+.filter {
     border-style: initial;
     border-width: thick;
 }
 
-.title{
+.title {
     font-size: 32px;
-    text-align:center;
-    font-weight:bold;
+    text-align: center;
+    font-weight: bold;
     margin-bottom: 3%;
 }
 </style>
