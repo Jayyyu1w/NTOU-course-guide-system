@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>海大資工課程</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.js"></script>
+  <link rel="stylesheet" href="/assets/course_info-4d92f703.css">
+</head>
+
+<body>
+    <section id="banner">
+        <div class="masthead">
+            <div class="container">
+                <div class="row h-100 align-items-center">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+            <div class="container mt-1 mb-1">
+                <a class="navbar-brand header_font" href="../index.html">資工課程導覽</a>
+                <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
+                    <img src="/assets/ntou-5f01a67a.png" width="150" height="30" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../index.html">首頁</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../all_course/all_course.html">所有課程</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../bulletin/bulletin.html">所有公告</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="../login/login.html" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                (使用者)
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <section id="class_info">
+        <div class="container d-flex justify-content-center my-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="class_name" class="border_style px-5 py-1">
+                        <h2>class</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="col">
+                <div class="row-md-12">
+                    <div class="col-md-12 offset-md-1">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="container border">
+                                    <div class="row h-100 pr-4 pt-3 mb-4">
+                                        <div class="text-dark fw-bold fs-3">
+                                            課程資訊
+                                        </div>
+                                    </div>
+                                    <h2>testing-up!</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="container border">
+                                    <div class="pr-4 pt-3 mb-4">
+                                        <div class="text-dark fw-bold fs-4">
+                                            你會對這堂課感興趣嗎?
+                                        </div>
+                                    </div>
+                                    <div class="pr-4 mb-4">
+                                        <div class="text-dark fw-bold fs-4">
+                                            與該課程相似:
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="pr-4 pt-3 mb-4">
+                                        <div class="text-dark fw-bold fs-4">
+                                            學生評價:
+                                            <img style="width: 50px;"
+                                                src="https://memeprod.ap-south-1.linodeobjects.com/user-template/8d0254d3eec4d41136f8604c25f60f56.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="comment_board">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-12 offset-md-1">
+                    <div class="card col-md-7">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="https://image.shutterstock.com/image-vector/avatar-profile-icon-vector-260nw-258907862.jpg"
+                                    width="70" class="rounded-circle mt-2">
+                            </div>
+                            <div class="col-10">
+                                <div class="comment-box ml-2">
+                                    <h4>Add a comment</h4>
+                                    <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label
+                                            for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                        <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                        <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                        <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                    </div>
+                                    <div class="comment-area"> <textarea class="form-control"
+                                            placeholder="what is your view?" rows="4"></textarea> </div>
+                                    <div class="comment-btns mt-2">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="pull-left"> <button
+                                                        class="btn btn-success btn-sm">Cancel</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="pull-right">
+                                                    <button class="btn btn-success send btn-sm">Send <i
+                                                            class="fa fa-long-arrow-right ml-1"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../banner_scroll.js"></script>
+</body>
+
+</html>
