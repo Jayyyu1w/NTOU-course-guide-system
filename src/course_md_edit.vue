@@ -31,6 +31,10 @@ export default {
   methods: {
     onSave: function (v, h) {
       console.log(v);
+      let postData = {text:v};
+      axios.post('https://database--project.000webhostapp.com/course_md_edit.php',postData).then((res)=>{
+        console.log(res);
+      })
       h.then((html) => {
         console.log(html);
       });
@@ -38,6 +42,7 @@ export default {
     onUploadImg: function (files, callback) {
       console.log(`img upload success! ${files}`);
     }
+    
     /*const onUploadImg = async (files, callback) => {
       const res = await Promise.all(
         files.map((file) => {
