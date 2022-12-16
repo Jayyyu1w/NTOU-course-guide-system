@@ -6,6 +6,7 @@ const root = resolve(__dirname, 'src')
 const outDir = resolve(__dirname, 'dist')
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './NTOU-course-guide-system/',
   root,
   plugins: [vue()],
   build: {
