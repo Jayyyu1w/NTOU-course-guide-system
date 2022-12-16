@@ -36,7 +36,7 @@ export default {
       console.log(postd);
       axios.post('https://database--project.000webhostapp.com/course_md_edit.php', postd).then((res) => {
         console.log(res);
-      h.then((html) => {
+        h.then((html) => {
           console.log(html);
         })
       });

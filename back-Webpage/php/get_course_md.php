@@ -1,12 +1,12 @@
 <?php
     include 'connect.php';
-    include 'get_course.php';
     $postData = json_decode(file_get_contents("php://input"),true);
-    $query = ("insert into course_information values(?,?,?,?)");
+    $course_ID = $postData['course_ID'];
+    $class = $postData['class'];
+    $query = ("select information from course_information where course_ID = ? and class = ?");
     $stmt = $db->prepare($query);
     try{
-        echo $postData['text'];
-        $error = $stmt->execute(array($cours_ID,$class,$postData['text'],$hot));
+        $error = $stmt->execute(array($cours_ID,$class));
     }catch(PDOException $e){
         Print "資料讀取失敗:" . $e->getMessage();
     }
