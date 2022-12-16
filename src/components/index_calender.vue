@@ -74,9 +74,11 @@ export default {
             return dateInfo;
         },
         genWeek: function () {
+            let res = [];
             for (let e = 0; e < 7; e++) {
-                this.weekdays[e] = (this.week[e].substring(0, 3));
+                res[e] = this.week[e].substring(0, 3);
             }
+            this.weekdays = res;
         },
         setStyle: function () {
             let sz = this.cal_width / 7;
@@ -99,29 +101,31 @@ export default {
             let e = this.genMonth();
             let r = 0;
             let u = false;
-            this.monthdays = [];
+            let res = [];
             while (!u) {
                 if (this.week[r] == e[0].weekday) {
                     u = true;
                 } else {    //補至該月起始星期
-                    this.monthdays.push(" ");
+                    res.push(" ");
                     r++;
                 }
             }
             for (let c = 0; c < 42 - r; c++) {
                 if (c >= e.length) {    //剩下補空白
-                    this.monthdays.push(" ");
+                    res.push(" ");
                 } else {
                     let v = e[c].day;
-                    let m = this.isToday(new Date(this.t, this.n - 1, v)) ? '<div class="today">' : "<div>";
-                    this.monthdays.push(v);
+                    res.push(v);
                 }
             }
+            this.monthdays = res;
             this.setStyle();
+            console.log(this.monthdays);
+            console.log(this.weekdays)
         },
         getMon: function () {
             this.construct();
-            return this.month[`${this.n - 1}`];
+            return this.month[this.n - 1];
         },
         nextMonth: function () {
             this.n++;
@@ -141,6 +145,7 @@ export default {
         }
     },
     mounted: function () {
+        this.construct();
     },
 }
 </script>
@@ -150,14 +155,14 @@ export default {
         <div id="calendar_header" :style="header_css">
             <span class="icon-chevron-left" @click="prevMonth">
                 &lt; </span>
-            <h1>{{ getMon() }}&nbsp;&nbsp;&nbsp;{{ t }}</h1>
+            <h1>{{ month[n - 1] }}&nbsp;&nbsp;&nbsp;{{ t }}</h1>
             <span class="icon-chevron-right" @click="nextMonth"> > </span>
         </div>
         <div id="calendar_weekdays">
-            <div v-for="wdays in weekdays" :style="default_css">{{ wdays }}</div>
+            <div v-for="wdays of weekdays" :style="default_css">{{ wdays }}</div>
         </div>
         <div id="calendar_content">
-            <div v-for="eday in monthdays">
+            <div v-for="eday of monthdays">
                 <div v-if='eday == " "' :style="blank_content"></div>
                 <div v-else-if="checkDays(eday)" :style="today_content">{{ eday }}</div>
                 <div v-else :style="default_css">{{ eday }}</div>
