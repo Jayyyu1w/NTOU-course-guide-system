@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      text: 'Hello md-editor-v3！',
+      text: '',
       toobars: ['bold', 'underline', 'italic', 'strikeThrough',
         'sub', 'sup', 'quote', 'unorderedList', 'orderedList', 'codeRow',
         'code', 'link', 'image', 'table', 'revoke',
@@ -31,18 +31,20 @@ export default {
   methods: {
     onSave: function (v, h) {
       console.log(v);
-      let postData = {text:v};
-      axios.post('https://database--project.000webhostapp.com/course_md_edit.php',postData).then((res)=>{
+      let postData = { "text": v };
+      let postd = JSON.stringify(postData);
+      console.log(postd);
+      axios.post('https://database--project.000webhostapp.com/course_md_edit.php', postd).then((res) => {
         console.log(res);
-      })
       h.then((html) => {
-        console.log(html);
+          console.log(html);
+        })
       });
     },
     onUploadImg: function (files, callback) {
       console.log(`img upload success! ${files}`);
     }
-    
+
     /*const onUploadImg = async (files, callback) => {
       const res = await Promise.all(
         files.map((file) => {

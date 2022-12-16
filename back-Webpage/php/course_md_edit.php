@@ -1,16 +1,13 @@
 <?php
     include 'connect.php';
-    $postData = $_POST["text"];
-    echo $postData;
-    /*
-    $query = ("insert into student values()
-    ");
+    include 'get_course.php';
+    $postData = json_decode(file_get_contents("php://input"),true);
+    $query = ("insert into course_information values(?,?,?,?)");
     $stmt = $db->prepare($query);
     try{
-        $error = $stmt->execute();
-        $result = $stmt->fetchAll();
-        echo json_encode($result);
+        echo $postData['text'];
+        $error = $stmt->execute(array($cours_ID,$class,$postData['text'],));
     }catch(PDOException $e){
-        echo "window.alert('資料讀取失敗')";
-    }*/
+        Print "資料讀取失敗:" . $e->getMessage();
+    }
 ?>
