@@ -14,11 +14,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(root, 'index.html'),
-        all_course: resolve(root, 'all_course', 'index.html'),
-        bulletin: resolve(root, 'bulletin', 'index.html'),
-        course_edit: resolve(root, 'course_edit', 'index.html'),
-        course_info: resolve(root, 'course_info', 'index.html'),
-        login: resolve(root, 'login', 'index.html'),
+        all_course: resolve(root, 'all_course', 'all_course.html'),
+        bulletin: resolve(root, 'bulletin', 'bulletin.html'),
+        course_edit: resolve(root, 'course_edit', 'course_edit.html'),
+        course_info: resolve(root, 'course_info', 'course_info.html'),
+        login: resolve(root, 'login', 'login.html'),
       }
     }
   }
