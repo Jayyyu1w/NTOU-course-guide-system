@@ -28,9 +28,11 @@ export default {
         let url = new URL(getUrlString);
         this.class_ID = url.searchParams.get('course_ID');
         this.class = url.searchParams.get('class');
-        axios.get(`https://database--project.000webhostapp.com/get_course_md.php?course_ID=${this.class_ID}&class=${this.class}`)
+        let links = "https://database--project.000webhostapp.com/get_course_md.php?course_ID="+this.class_ID+"&class="+this.class;
+        axios.get(links)
             .then((res) => {
-                this.text = res.data;
+                console.log(res);
+                this.text = res.data[0]['information'];
                 console.log(this.text);
             })
     },
@@ -57,9 +59,9 @@ export default {
         <div class="container mt-5">
             <div class="col">
                 <div class="row-md-12">
-                    <div class="col-md-12 offset-md-1">
+                    <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-md-8">
                                 <div class="container border">
                                     <div class="row h-100 pr-4 pt-3 mb-4">
                                         <div class="text-dark fw-bold fs-3">
@@ -72,7 +74,7 @@ export default {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="container border">
                                     <div class="pr-4 pt-3 mb-4">
                                         <div class="text-dark fw-bold fs-4">
