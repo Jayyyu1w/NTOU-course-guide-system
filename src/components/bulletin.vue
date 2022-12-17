@@ -2,7 +2,12 @@
 export default ({
     data: function () {
         return {
-            bulletin_info: []
+            bulletin_info: [],
+            totBulletin: 0,
+            pageSize: 10,
+            curPage: 1,
+            cut: [],
+            totPage: 0
         }
     },
     created: function () {
@@ -13,12 +18,20 @@ export default ({
                     item.headid="head"+item.bulletin_ID;
                     item.bodyid="body"+item.bulletin_ID;
                     item.actbody="#"+item.bodyid;
+                    this.totBulletin+=1;
                 }
-                console.log(this.bulletin_info);
+                this.slice(1);
+                this.totPage=Math.ceil(this.totBulletin/this.pageSize);
+                console.log(this.totPage);
             })
     },
     methods: {
-        
+        slice :function(cur){
+            window.scrollTo(0, 0);
+            console.log(cur);
+            this.curPage=cur;
+            this.cut=this.bulletin_info.slice((this.curPage*this.pageSize)-this.pageSize,(this.curPage*this.pageSize))
+        }
     },
     mounted: function () {
 
@@ -36,11 +49,11 @@ export default ({
                 </div>
                 <div class="row">
                     <div class="accordion" id="bulletin">
-                        <div v-for="info in bulletin_info">
+                        <div v-for="info in cut">
                             <div class="accordion-item">
                                 <div class="accordion-header" v-bind:id="info.headid">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        v-bind:data-bs-target="info.actbody" aria-expanded="false" v-bind:aria-controls="info.bodyid">
+                                        v-bind:data-bs-target="info.actbody" aria-expanded="true" v-bind:aria-controls="info.bodyid">
                                         <strong>{{ info.title }}</strong>
                                     </button>
                                     <div class="row">
@@ -79,20 +92,8 @@ export default ({
                 </div>
                 <div class="row mt-5">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
+                        <li class="page-item" v-for="n in this.totPage" >
+                            <button class="page-link" @click="slice(n)">{{n}}</button>
                         </li>
                     </ul>
                 </div>
