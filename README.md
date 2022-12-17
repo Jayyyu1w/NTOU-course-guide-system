@@ -21,5 +21,3 @@ Vue3+Vite
 | [v1.1](back-Webpage/mysql/dbproject_v1.1.sql) | 空的原始資料表(加入外鍵跟主鍵的修正) | [DBproject_v1.1](back-Webpage/mysql/DBproject_v1.1.pdf) |
 | [v1.2](back-Webpage/mysql/dbproject_v1.2.sql) | 處理好外鍵的問題 | 可以正常使用 |
 | [v1.3](back-Webpage/mysql/dbproject_v1.3.sql) | 加入course資料 | |
-
-//test
