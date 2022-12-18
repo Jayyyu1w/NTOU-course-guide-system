@@ -27,7 +27,7 @@ export default {
                 <p>{{ notify.notify_content }}</p>
             </div>
         </div>
-        <a href="bulletin.html" class="more">>&nbsp;更多...</a>
+        <a href="bulletin/bulletin.html" class="more">>&nbsp;更多...</a>
     </div>
 </template>
 
