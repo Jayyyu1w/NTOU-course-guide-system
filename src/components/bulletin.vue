@@ -11,7 +11,7 @@ export default ({
         }
     },
     created: function () {
-        axios.get("http://localhost:3000/bulletin")
+        axios.get("https://database--project.000webhostapp.com/bulletin.php")
             .then((res) => {
                 this.bulletin_info=res.data;
                 for (let item of this.bulletin_info) {
