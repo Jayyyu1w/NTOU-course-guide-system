@@ -24,8 +24,8 @@ export default ({
             .then((res) => {
                 this.sz=res.data.length;
                 console.log(this.sz);
-            })
-    },
+            }) // modify:get this bulletin_ID from php to update
+    },  // add a new bulletin:get count of bulledtin to sz, add new bulletin(sz+1)
     methods: {
         click :function(){
             let yy = new Date().getFullYear();
@@ -40,7 +40,7 @@ export default ({
             this.submit.receiver=this.$refs.receiver.value;
             this.submit.content=this.$refs.content.value;
             this.submit.time=yy+'/'+mm+'/'+dd+' '+hh+':'+mf+':'+ss
-            this.submit.bulletin_ID=String(this.sz+1);
+            this.submit.bulletin_ID=String(this.sz+1); // if you modify this billetin, why sz+1
             var out=JSON.stringify(this.submit);
             axios.post('#', out).then((res) => {
                 console.log(res);
