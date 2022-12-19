@@ -11,10 +11,8 @@ Vue3+Vite
 [參考影片](https://youtu.be/rNQIA0Fe9KQ)
 
 ## mysql資料表
-```
-使用本地端：xampphtdocs
-使用線上端：https://database--project.000webhostapp.com/
-```
+* 使用本地端：xampphtdocs
+* 使用線上端：[NTOU-course-guide-system](https://jayyyu1w.github.io/NTOU-course-guide-system/)
 | 版本 | 說明 | 備註　|
 | ---- | ---- | ---- |
 | [v1.0](back-Webpage/mysql/dbproject_v1.0.sql) | 空的原始資料表(缺少外鍵) | [DBproject_v1.0](back-Webpage/mysql/DBproject_v1.0.pdf) |
