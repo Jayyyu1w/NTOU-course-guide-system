@@ -21,6 +21,7 @@ export default {
             text: '',
             class_ID: "",
             class: "",
+            class_name: "",
         }
     },
     created: function () {
@@ -28,11 +29,13 @@ export default {
         let url = new URL(getUrlString);
         this.class_ID = url.searchParams.get('course_ID');
         this.class = url.searchParams.get('class');
-        let links = "https://database--project.000webhostapp.com/get_course_md.php?course_ID="+this.class_ID+"&class="+this.class;
+        let links = "https://database--project.000webhostapp.com/get_course_md.php?course_ID=" + this.class_ID + "&class=" + this.class;
         axios.get(links)
             .then((res) => {
                 console.log(res);
-                this.text = res.data[0]['information'];
+                let info = res.data[0];
+                this.text = info['information'];
+                this.class_name = info['name'];
                 console.log(this.text);
             })
     },
@@ -50,49 +53,47 @@ export default {
         <div class="container d-flex justify-content-center my-5">
             <div class="row">
                 <div class="col-md-12">
-                    <div id="class_name" class="border_style px-5 py-1">
-                        <h2>class</h2>
+                    <div id="class_name" class="border_style info_text_style">
+                        {{ class_name }}
                     </div>
                 </div>
             </div>
         </div>
         <div class="container mt-5">
-            <div class="col">
-                <div class="row-md-12">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="container border">
-                                    <div class="row h-100 pr-4 pt-3 mb-4">
-                                        <div class="text-dark fw-bold fs-3">
-                                            課程資訊
-                                        </div>
-                                    </div>
-                                    <div id="md-editor" class="container">
-                                        <md-editor language="zh-TW" v-model="text" preview-only="true"
-                                            :toolbarsExclude="toolbarsExclude" maxLength=5000 />
+            <div class="row-md-12">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="container border">
+                                <div class="row h-100 pr-4 pt-3 mb-4">
+                                    <div class="text-dark fw-bold cinfo">
+                                        課程資訊
                                     </div>
                                 </div>
+                                <div id="md-editor" class="container">
+                                    <md-editor language="zh-TW" v-model="text" preview-only="true"
+                                        :toolbarsExclude="toolbarsExclude" maxLength=5000 />
+                                </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="container border">
-                                    <div class="pr-4 pt-3 mb-4">
-                                        <div class="text-dark fw-bold fs-4">
-                                            你會對這堂課感興趣嗎?
-                                        </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container border">
+                                <div class="pr-4 pt-3 mb-4">
+                                    <div class="text-dark fw-bold fs-4">
+                                        你會對這堂課感興趣嗎?
                                     </div>
-                                    <div class="pr-4 mb-4">
-                                        <div class="text-dark fw-bold fs-4">
-                                            與該課程相似:
-                                        </div>
+                                </div>
+                                <div class="pr-4 mb-4">
+                                    <div class="text-dark fw-bold fs-4">
+                                        與該課程相似:
                                     </div>
-                                    <hr>
-                                    <div class="pr-4 pt-3 mb-4">
-                                        <div class="text-dark fw-bold fs-4">
-                                            學生評價:
-                                            <img style="width: 50px;"
-                                                src="https://memeprod.ap-south-1.linodeobjects.com/user-template/8d0254d3eec4d41136f8604c25f60f56.png">
-                                        </div>
+                                </div>
+                                <hr>
+                                <div class="pr-4 pt-3 mb-4">
+                                    <div class="text-dark fw-bold fs-4">
+                                        學生評價:
+                                        <img style="width: 50px;"
+                                            src="https://memeprod.ap-south-1.linodeobjects.com/user-template/8d0254d3eec4d41136f8604c25f60f56.png">
                                     </div>
                                 </div>
                             </div>
@@ -103,3 +104,21 @@ export default {
         </div>
     </section>
 </template>
+
+<style>
+.cinfo {
+    font-size: 36px;
+    text-align: center;
+}
+
+.border_style {
+    border-style: double;
+    border-radius: 5px;
+}
+
+.info_text_style {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 10px 40px 10px 40px;
+}
+</style>

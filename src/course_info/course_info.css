@@ -21,11 +21,6 @@
     font-size: 28px
 }
 
-.border_style{
-    border-style: double;
-    border-radius: 5px;
-}
-
 .card {
     position: relative;
     display: flex;
