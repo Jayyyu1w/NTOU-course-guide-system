@@ -12,17 +12,17 @@ export default ({
         let url = new URL(getUrlString);
         this.class_ID = url.searchParams.get('course_ID');
         this.class = url.searchParams.get('class');
-        let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
-        /*axios.get(link) //發出http請求
-            .then((res) => {
-                console.log(res.data);
-                this.mess_info=res.data;
-            })*/
-        axios.get("http://localhost:3000/message") //發出http請求
+        let links = "https://database--project.000webhostapp.com/get_message.php?course_ID=" + this.class_ID + "&class=" + this.class;
+        axios.get(links) //發出http請求
             .then((res) => {
                 console.log(res.data);
                 this.mess_info=res.data;
             })
+        /*axios.get("http://localhost:3000/message") //發出http請求
+            .then((res) => {
+                console.log(res.data);
+                this.mess_info=res.data;
+            })*/
     },
     methods: {
         getPicture: function () {

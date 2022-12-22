@@ -5,6 +5,8 @@ export default ({
             submit: {
                 title: "",
                 content: "",
+                //course_ID: 1,
+                class: 'A',
                 class_name: "",
                 sender: "",
                 receiver: "",
@@ -20,11 +22,11 @@ export default ({
             .then((res) => {
                 this.courses = res.data;
             })
-        axios.get("http://localhost:3000/bulletin")
+        /*axios.get("http://localhost:3000/bulletin")
             .then((res) => {
                 this.sz=res.data.length;
                 console.log(this.sz);
-            }) // modify:get this bulletin_ID from php to update
+            }) // modify:get this bulletin_ID from php to update*/
     },  // add a new bulletin:get count of bulledtin to sz, add new bulletin(sz+1)
     methods: {
         click :function(){
@@ -39,12 +41,14 @@ export default ({
             this.submit.sender=this.$refs.sender.value;
             this.submit.receiver=this.$refs.receiver.value;
             this.submit.content=this.$refs.content.value;
-            this.submit.time=yy+'/'+mm+'/'+dd+' '+hh+':'+mf+':'+ss
+            this.submit.time=yy+'-'+mm+'-'+dd+' '+hh+':'+mf+':'+ss
             this.submit.bulletin_ID=String(this.sz+1); // if you modify this billetin, why sz+1
             var out=JSON.stringify(this.submit);
-            axios.post('#', out).then((res) => {
+            console.log(out);
+            axios.post('https://database--project.000webhostapp.com/bulletin_add.php', out).then((res) => {
                 console.log(res);
             });
+            location.href='../bulletin/bulletin.html';
         }
     },
     mounted: function () {
@@ -86,8 +90,8 @@ export default ({
                     <textarea class="form-control" ref="content" rows="10" aria-describedby="content_help"></textarea>
                     <div id="content_help" class="form-text">請輸入內容</div>
                 </div>
-                <button type="submit" class="btn btn-primary mb-3" style="float:right;" @click="click">送出</button>
             </form>
+            <button style="float:right;" @click="click">送出</button>
         </div>
         <div class="col-md-2"></div>
     </div>

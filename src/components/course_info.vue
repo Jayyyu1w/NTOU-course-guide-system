@@ -22,6 +22,7 @@ export default {
             class_ID: "",
             class: "",
             class_name: "",
+            star: 0
         }
     },
     created: function () {
@@ -30,20 +31,33 @@ export default {
         this.class_ID = url.searchParams.get('course_ID');
         this.class = url.searchParams.get('class');
         let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
+        let links2 = "https://database--project.000webhostapp.com/get_hot_avg.php?course_ID=" + this.class_ID + "&class=" + this.class;
         axios.get(links)
             .then((res) => {
                 console.log(res);
                 let info = res.data[0];
                 this.text = info['information'];
                 this.class_name = info['name'];
-                console.log(this.text);
+                this.hot=info['hot'];
+                console.log(this.hot);
             })
+        axios.get(links2)
+        .then((res) => {
+            var avg=res.data[0].avg;
+            this.star=avg;
+            console.log(avg);
+        })
+        
     },
     methods: {
-
+        getAvg: function () {
+            var avg=this.star/1;
+            this.star=(avg*1).toFixed(2);
+            return "star"+this.star;
+        },
     },
     mounted: function () {
-
+        
     },
 }
 </script>
@@ -91,8 +105,24 @@ export default {
                                 <hr>
                                 <div class="pr-4 pt-3 mb-4">
                                     <div class="text-dark fw-bold fs-4">
-                                        學生評價:
-                                        <img style="width: 50px;"
+                                        <h4 class="fw-bolder" style="float:left;" v-bind:id="getAvg()">學生評價:&nbsp&nbsp{{this.star}}&nbsp&nbsp</h4>
+                                        <div class="rating" style="float:left;">
+                                            <div v-if="this.star>=5"><label for="5" class="display">☆</label></div>
+                                            <div v-else><label for="5" class="no_display">☆</label></div>
+                                            
+                                            <div v-if="this.star>=4"><label for="4" class="display">☆</label></div>
+                                            <div v-else><label for="4" class="no_display">☆</label></div>
+
+                                            <div v-if="this.star>=3"><label for="3" class="display">☆</label></div>
+                                            <div v-else><label for="3" class="no_display">☆</label></div>
+
+                                            <div v-if="this.star>=2"><label for="2" class="display">☆</label></div>
+                                            <div v-else><label for="2" class="no_display">☆</label></div>
+
+                                            <div v-if="this.star>=1"><label for="1" class="display">☆</label></div>
+                                            <div v-else><label for="1" class="no_display">☆</label></div>
+                                        </div>
+                                        <img style="width: 100px;"
                                             src="https://memeprod.ap-south-1.linodeobjects.com/user-template/8d0254d3eec4d41136f8604c25f60f56.png">
                                     </div>
                                 </div>
@@ -120,5 +150,31 @@ export default {
     font-size: 28px;
     font-weight: bold;
     padding: 10px 40px 10px 40px;
+}
+
+.rating {
+    display: flex;
+    margin-top: -10px;
+    flex-direction: row-reverse;
+    margin-left: -4px;
+    float: left
+}
+
+.rating>div>label {
+    position: relative;
+    width: 19px;
+    font-size: 25px;
+    color: #ffdd00;
+    cursor: pointer
+}
+.display::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 1;
+}
+.no_display::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
 }
 </style>
