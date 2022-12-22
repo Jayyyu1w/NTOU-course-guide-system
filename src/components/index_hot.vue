@@ -44,23 +44,18 @@ export default ({
                     <h6>教師：{{ course.teacher }}</h6>
                     <h6 class="fw-bolder" style="float:left;">{{ course.star }}&nbsp&nbsp&nbsp</h6>
                     <div class="rating" style="float:left;">
-                        <!--<input type="radio" name="rating" value="5" id="5">-->
                         <div v-if="course.star>=5"><label for="5" class="display">☆</label></div>
                         <div v-else><label for="5" class="no_display">☆</label></div>
                         
-                        <!--<input type="radio" name="rating" value="4" id="4">-->
                         <div v-if="course.star>=4"><label for="4" class="display">☆</label></div>
                         <div v-else><label for="4" class="no_display">☆</label></div>
 
-                        <!--<input type="radio" name="rating" value="3" id="3">-->
                         <div v-if="course.star>=3"><label for="3" class="display">☆</label></div>
                         <div v-else><label for="3" class="no_display">☆</label></div>
 
-                        <!--<input type="radio" name="rating" value="2" id="2">-->
                         <div v-if="course.star>=2"><label for="2" class="display">☆</label></div>
                         <div v-else><label for="2" class="no_display">☆</label></div>
 
-                        <!--<input type="radio" name="rating" value="1" id="1">-->
                         <div v-if="course.star>=1"><label for="1" class="display">☆</label></div>
                         <div v-else><label for="1" class="no_display">☆</label></div>
                     </div>
