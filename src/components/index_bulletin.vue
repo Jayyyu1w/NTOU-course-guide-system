@@ -42,7 +42,7 @@ export default ({
                                 <strong>{{ info.title }}</strong>
                             </button>
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="text-secondary">
                                         &nbsp;&nbsp;&nbsp;
                                         {{ info.name }}
