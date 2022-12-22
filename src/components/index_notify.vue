@@ -37,10 +37,3 @@ export default {
     color: navy;
     float: right;
 }
-
-.notifies :hover {
-    background-color: #E0E0E0;
-    user-select: none;
-    cursor: pointer;
-}
-</style>
