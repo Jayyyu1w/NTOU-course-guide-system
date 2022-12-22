@@ -7,7 +7,7 @@ export default {
         }
     },
     created() {
-        axios.get("https://database--project.000webhostapp.com/bulletin.php") //發出http請求
+        axios.get("http://localhost/course.php") //發出http請求
             .then((res) => {
                 console.log(res.data);
             })

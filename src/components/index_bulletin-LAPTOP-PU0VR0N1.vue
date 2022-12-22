@@ -9,7 +9,7 @@ export default ({
         }
     },
     created: function () {
-        axios.get("https://database--project.000webhostapp.com/bulletin.php")
+        axios.get("http://localhost:3000/bulletin")
             .then((res) => {
                 this.bulletin_info=res.data;
                 for (let item of this.bulletin_info) {
