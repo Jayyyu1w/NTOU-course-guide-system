@@ -1,0 +1,14 @@
+{
+    "course": [
+        {
+            "course_name" : "algorithm",
+            "teacher" : "Lin",
+            "class" : "B",
+            "compulsory" : "必修",
+            "credit" : 3,
+            "course_id" : "A123456",
+            "semester" : "1112",
+            "grade" : 2 
+        }
+    ]
+}
