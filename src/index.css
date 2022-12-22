@@ -23,6 +23,12 @@ ul {
     font-weight: bold;
 }
 
+.more {
+    text-decoration: none;
+    color: navy;
+    float: right;
+}
+
 #calendar {
     margin-left: 13%;
     font-family: 'Lato', sans-serif;

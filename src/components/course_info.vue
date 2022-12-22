@@ -29,7 +29,7 @@ export default {
         let url = new URL(getUrlString);
         this.class_ID = url.searchParams.get('course_ID');
         this.class = url.searchParams.get('class');
-        let links = "https://database--project.000webhostapp.com/get_course_md.php?course_ID=" + this.class_ID + "&class=" + this.class;
+        let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
         axios.get(links)
             .then((res) => {
                 console.log(res);
