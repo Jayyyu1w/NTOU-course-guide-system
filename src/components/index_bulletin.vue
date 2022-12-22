@@ -45,7 +45,7 @@ export default ({
                                 <div class="col-md-2">
                                     <div class="text-secondary">
                                         &nbsp;&nbsp;&nbsp;
-                                        {{ info.class_name }}
+                                        {{ info.name }}
                                     </div>
                                 </div>
                                 <div class="col-md-2">
