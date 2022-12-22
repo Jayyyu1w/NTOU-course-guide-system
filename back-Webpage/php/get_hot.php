@@ -1,10 +1,6 @@
 <?php
     include 'connect.php';
-    $query = ("select * from course as c, course_information as i
-    where 
-        c.course_ID = i.course_ID AND 
-        c.class = i.class
-    order by hot DESC");
+    $query = ("select * from course");
     $stmt = $db->prepare($query);
     try{
         $error = $stmt->execute(array($course_ID,$class));
