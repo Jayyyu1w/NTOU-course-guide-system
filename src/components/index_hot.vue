@@ -64,6 +64,17 @@ export default ({
                 </li>
             </div>
         </ul>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col">
+                <a href="https://cse.ntou.edu.tw/"><img src="/imgsrc/dian_zhi_da_lo.jpeg" style="width:300px"></a>
+            </div>
+        </div>
     </div>
 </template>
 
