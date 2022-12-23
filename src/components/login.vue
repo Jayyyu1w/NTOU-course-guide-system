@@ -1,17 +1,34 @@
 <script>
-    export default{
+    export default({
         data: function () {
             return {
-
+                submit: {
+                    account: "",
+                    password: ""
+                },
             }
         },
         methods: {
-            
+            click :function(){
+                this.submit.account=this.$refs.account.value;
+                this.submit.password=this.$refs.password.value;
+                var out=JSON.stringify(this.submit);
+                console.log(out);
+                var name;
+                axios.post('https://database--project.000webhostapp.com/login.php', out).then((res) => {
+                    //console.log(res.data);
+                    name=res.data;
+                    console.log(name);
+                    window.sessionStorage.setItem("userName",name);
+                    location.href='../index.html';
+                });
+                //console.log(window.sessionStorage);
+            }
         },
         mounted: function () {
 
         },
-    }
+    });
 </script>
 
 <template>
@@ -25,13 +42,13 @@
                     </div>
                     <form id="Login">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="inputEmail" placeholder="User Name">
+                            <input type="text" ref="account" class="form-control" id="inputEmail" placeholder="User Name">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            <input type="password" ref="password" class="form-control" id="inputPassword" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary">登入</button>
                     </form>
+                    <button type="submit" class="btn btn-primary" @click="click">登入</button>
                 </div>
             </div>
         </div>
