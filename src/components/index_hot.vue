@@ -6,7 +6,9 @@ export default ({
             hotSize: 3,
             curPage: 1,
             top_info: [],
-            imgs: ['../imgsrc/medal1.png','../imgsrc/medal2.png','../imgsrc/medal3.png'],
+            imgs: ['/imgsrc/medal1.png','/imgsrc/medal2.png','/imgsrc/medal3.png'],
+            card: ['/imgsrc/card_back.png','/imgsrc/dian_zhi_da_lo.jpeg'],
+            curCard: '/imgsrc/card_back.png'
         }
     },
     created: function () {
@@ -27,6 +29,12 @@ export default ({
         changeWeb: function (dis) {
             window.location.href = `course_info/course_info.html?course_ID=${dis.course_ID}&class=${dis.class}`;
         },
+        changeCardFront: function(){
+            this.curCard=this.card[1];
+        },
+        changeCardBack: function(){
+            this.curCard=this.card[0];
+        }
     },
     mounted: function () {
 
@@ -72,7 +80,9 @@ export default ({
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col">
-                <a href="https://cse.ntou.edu.tw/"><img src="/imgsrc/dian_zhi_da_lo.jpeg" style="width:300px"></a>
+                <a href="https://cse.ntou.edu.tw/"  target="_blank">
+                    <img v-bind:src="this.curCard" style="width:300px" @mouseover="changeCardFront" @mouseleave="changeCardBack">
+                </a>
             </div>
         </div>
     </div>

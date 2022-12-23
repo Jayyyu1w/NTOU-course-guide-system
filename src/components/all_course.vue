@@ -121,7 +121,6 @@ export default ({
                                         <div>資訊工程學系&nbsp;&nbsp;&nbsp;{{ dis.grade }}&nbsp;&nbsp;&nbsp;{{ dis.class }}
                                         </div>
                                         <div>
-                                            必選修別：{{ dis.compulsory }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             學分數：{{ dis.credit }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             授課教師：{{ dis.teacher }}
                                         </div>
