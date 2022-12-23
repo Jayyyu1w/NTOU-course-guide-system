@@ -15,10 +15,10 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.js"></script>
-  <script type="module" crossorigin src="/NTOU-course-guide-system/assets/main-a7f26252.js"></script>
-  <link rel="modulepreload" crossorigin href="/NTOU-course-guide-system/assets/banner_scroll-341c5548.js">
-  <link rel="modulepreload" crossorigin href="/NTOU-course-guide-system/assets/_plugin-vue_export-helper-53f540cf.js">
-  <link rel="stylesheet" href="/NTOU-course-guide-system/assets/index-e792b6ec.css">
+  <script type="module" crossorigin src="/NTOU-course-guide-system/assets/main-3bbdb662.js"></script>
+  <link rel="modulepreload" crossorigin href="/NTOU-course-guide-system/assets/_plugin-vue_export-helper-8f2ba291.js">
+  <link rel="modulepreload" crossorigin href="/NTOU-course-guide-system/assets/banner_scroll-e57f679b.js">
+  <link rel="stylesheet" href="/NTOU-course-guide-system/assets/index-65b304ca.css">
 </head>
 
 <body>
@@ -69,6 +69,7 @@
             </div>
         </nav>
     </section>
+    <div id="fixpos"></div>
     <section id="content">
         <div class="container my-5">
             <div class="row">
@@ -80,10 +81,12 @@
                                 <div class="row-md-12">
                                     <div class="container row-md-6">
                                         <div class="title_decoration row h-100 px-4 mb-4">
-                                            重要公告
+                                            最新公告
                                         </div>
                                         <div id="bulletin"></div>
-                                        <div id="notification"></div>
+                                        <div id="notification">
+                                            <a href="bulletin/bulletin.html" class="more">>&nbsp;更多...</a>
+                                        </div>
                                     </div>
                                     <div class="container row-md-6 my-5">
                                         <div class="title_decoration row h-100 px-4 mb-4">
@@ -100,7 +103,7 @@
                                 <div class="title_decoration row h-100 px-4 mb-4">
                                     熱門課程
                                 </div>
-                                <div id="popular"></div>
+                                <div id="hot"></div>
                             </div>
                         </div>
                     </div>
