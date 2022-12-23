@@ -4,7 +4,7 @@ export default ({
         return {
             curPicture: "",
             mess_info: [],
-            imgs: ['../imgsrc/mark (1).png','../imgsrc/mark (2).png','../imgsrc/mark (3).png','../imgsrc/mark (4).png','../imgsrc/mark (5).png','../imgsrc/mark (6).png','../imgsrc/mark (7).png','../imgsrc/mark (8).png','../imgsrc/mark (9).png'],
+            imgs: ['mark (1).png','mark (2).png','mark (3).png','mark (4).png','mark (5).png','mark (6).png','mark (7).png','mark (8).png','mark (9).png'],
         }
     },
     created: function () {
@@ -18,16 +18,11 @@ export default ({
                 console.log(res.data);
                 this.mess_info=res.data;
             })
-        /*axios.get("http://localhost:3000/message") //發出http請求
-            .then((res) => {
-                console.log(res.data);
-                this.mess_info=res.data;
-            })*/
     },
     methods: {
         getPicture: function () {
             var idx = Math.floor(Math.random() * 9);
-            return this.imgs[idx];
+            return "https://database--project.000webhostapp.com/img/" + this.imgs[idx];
         },
     },
     mounted: function () {

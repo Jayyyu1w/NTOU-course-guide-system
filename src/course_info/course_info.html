@@ -15,13 +15,11 @@
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.js"></script>
     <script>
-        var imgs=['../imgsrc/mark (1).png','../imgsrc/mark (2).png','../imgsrc/mark (3).png','../imgsrc/mark (4).png','../imgsrc/mark (5).png','../imgsrc/mark (6).png','../imgsrc/mark (7).png','../imgsrc/mark (8).png','../imgsrc/mark (9).png'];
-        function loadPicture(){
-            var obj=document.getElementById("pic");
-            var idx = Math.floor(Math.random() * 9);
-            pic.innerHTML='<img src="'+imgs[idx]+'"width="70" class="rounded-circle mt-2">';
-        }
-        window.addEventListener( "load", loadPicture, false );
+        var imgs=['mark (1).png','mark (2).png','mark (3).png','mark (4).png','mark (5).png','mark (6).png','mark (7).png','mark (8).png','mark (9).png'];
+        $(document).ready(function () {
+            let idx = Math.floor(Math.random()*9);
+            $('#pic').attr('src', `https://database--project.000webhostapp.com/img/${imgs[idx]}`)
+        })
     </script>
 </head>
 
@@ -80,7 +78,9 @@
                 <div class="col-md-12">
                     <div class="card col-md-8">
                         <div class="row">
-                            <div class="col-2" id="pic"></div>
+                            <div class="col-2">
+                                <img src="" id="pic" width="70" class="rounded-circle mt-2">
+                            </div>
                             <div class="col-10">
                                 <div class="comment-box ml-2">
                                     <h4>Add a comment</h4>

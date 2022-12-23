@@ -6,9 +6,9 @@ export default ({
             hotSize: 3,
             curPage: 1,
             top_info: [],
-            imgs: ['/imgsrc/medal1.png','/imgsrc/medal2.png','/imgsrc/medal3.png'],
-            card: ['/imgsrc/card_back.png','/imgsrc/dian_zhi_da_lo.jpeg'],
-            curCard: '/imgsrc/card_back.png'
+            imgs: ['medal1.png','medal2.png','medal3.png'],
+            card: ['card_back.png','dian_zhi_da_lo.jpeg'],
+            curCard: 'card_back.png'
         }
     },
     created: function () {
@@ -47,7 +47,7 @@ export default ({
         <ul class="list-group">
             <div v-for="course of top_info">
                 <li class="list-group-item" @click="changeWeb(course)">
-                    <img v-bind:src="course.img" style="width:23px; float: left;">
+                    <img v-bind:src="'https://database--project.000webhostapp.com/img/'+course.img" style="width:23px; float: left;">
                     <h3 class="fw-bolder">&nbsp{{course.name}}</h3>
                     <h6>教師：{{ course.teacher }}</h6>
                     <h6 class="fw-bolder" style="float:left;">{{ course.star }}&nbsp&nbsp&nbsp</h6>
@@ -81,7 +81,7 @@ export default ({
             <div class="col-md-1"></div>
             <div class="col">
                 <a href="https://cse.ntou.edu.tw/"  target="_blank">
-                    <img v-bind:src="this.curCard" style="width:300px" @mouseover="changeCardFront" @mouseleave="changeCardBack">
+                    <img v-bind:src="'https://database--project.000webhostapp.com/img/'+ this.curCard" style="width:300px" @mouseover="changeCardFront" @mouseleave="changeCardBack">
                 </a>
             </div>
         </div>
