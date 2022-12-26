@@ -15,6 +15,7 @@ export default ({
         axios.get("https://database--project.000webhostapp.com/get_hot.php") //發出http請求
             .then((res) => {
                 this.course_info=res.data;
+                console.log(res.data);
                 this.top_info=this.course_info.slice((this.curPage*this.hotSize)-this.hotSize,(this.curPage*this.hotSize));
                 this.top_info[0].img=this.imgs[0];
                 this.top_info[1].img=this.imgs[1];
@@ -50,7 +51,7 @@ export default ({
                     <img v-bind:src="'https://database--project.000webhostapp.com/img/'+course.img" style="width:23px; float: left;">
                     <h3 class="fw-bolder">&nbsp{{course.name}}</h3>
                     <h6>教師：{{ course.teacher }}</h6>
-                    <h6 class="fw-bolder" style="float:left;">{{ course.star }}&nbsp&nbsp&nbsp</h6>
+                    <h6 class="fw-bolder" style="float:left;">{{ course.hot }}&nbsp&nbsp&nbsp</h6>
                     <div class="rating" style="float:left;">
                         <div v-if="course.star>=5"><label for="5" class="display">☆</label></div>
                         <div v-else><label for="5" class="no_display">☆</label></div>
@@ -67,7 +68,7 @@ export default ({
                         <div v-if="course.star>=1"><label for="1" class="display">☆</label></div>
                         <div v-else><label for="1" class="no_display">☆</label></div>
                     </div>
-                    <h6 class="fw-bolder">&nbsp&nbsp(10)</h6>
+                    <h6 class="fw-bolder">&nbsp&nbsp({{course.count}})</h6>
                     <br>
                 </li>
             </div>
