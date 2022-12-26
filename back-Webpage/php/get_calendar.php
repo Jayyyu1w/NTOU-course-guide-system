@@ -9,7 +9,7 @@
     $stmt = $db->prepare($query);
     $error = $stmt->execute(array($year, $month, $year, $month));
     $result = $stmt->fetchAll();    // $result is an array
-    echo json_encode($result[0]);      // echo the array in json format
+    echo json_encode($result);      // echo the array in json format
     } catch (PDOException $e) {
         print "資料讀取失敗:" . $e->getMessage();
     }

@@ -30,6 +30,7 @@ export default {
                 "color": ``,
             },
             today_content: {
+                "position": "relative",
                 "width": ``,
                 "height": ``,
                 "line-height": ``,
@@ -40,7 +41,7 @@ export default {
                 "width": ``,
                 "height": ``,
                 "background-color": "#E8E8E8",
-            }
+            },
         }
     },
     methods: {
@@ -134,6 +135,7 @@ export default {
                 this.n = 1;
                 this.t++;
             }
+            this.getEvent();
             this.construct();
         },
         prevMonth: function () {
@@ -142,18 +144,33 @@ export default {
                 this.n = 12;
                 this.t--;
             }
+            this.getEvent();
             this.construct();
-        }
+        },
+        getEvent: function (e) {
+            console.log('hello!');
+            let postD = { "year": this.t.toString(), "month": this.n.toString() };
+            let postdata = JSON.stringify(postD);
+            console.log(postdata);
+            axios.post('https://database--project.000webhostapp.com/get_calendar.php', postdata).then((res) => {
+                let ret = res.data;
+                console.log(ret);
+                this.event_info = [];
+                for (let item of ret) {
+                    let st = parseInt(item.startDate.slice(8));
+                    let ed = parseInt(item.endDate.slice(8));
+                    for (let i = st; i <= ed; i++) {
+                        if (this.event_info[i] == undefined)
+                            this.event_info[i] = [];
+                        this.event_info[i].push({ "type": item.EventType, "event_name": item.Event });
+                    }
+                }
+                console.log(this.event_info);
+            });
+        },
     },
     mounted: function () {
-        let postData = { "year" : `${this.t}`, "month" : `${this.n}` };
-        let postd = JSON.stringify(postData);
-        console.log(this.t);
-        console.log(this.n);
-        axios.post('https://database--project.000webhostapp.com/get_calendar.php', postd).then((res) => {
-            let ret = res.data;
-            console.log(res);
-        });
+        this.getEvent();
         this.construct();
     },
 }
@@ -173,9 +190,90 @@ export default {
         <div id="calendar_content">
             <div v-for="eday of monthdays">
                 <div v-if='eday == " "' :style="blank_content"></div>
-                <div v-else-if="checkDays(eday)" :style="today_content">{{ eday }}</div>
-                <div v-else :style="default_css">{{ eday }}</div>
+                <div v-else-if="checkDays(eday)" :style="today_content" class="reldiv">
+                    {{ eday }}
+                    <template v-if="!isNaN(eday) && event_info[eday] != null">
+                        <template v-for="ei of event_info[eday]">
+                            <button v-if="ei.type == '假日'" type="button" class="btn eventbtn1" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                            <button v-if="ei.type == '課程'" type="button" class="btn eventbtn2"
+                                data-bs-toggle="tooltip" data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                            <button v-if="ei.type == '生活'" type="button" class="btn eventbtn3"
+                                data-bs-toggle="tooltip" data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                        </template>
+                    </template>
+                </div>
+                <div v-else :style="default_css" class="reldiv">
+                    {{ eday }}
+                    <template v-if="!isNaN(eday)">
+                        <template v-for="ei of event_info[eday]">
+                            <button v-if="ei.type == '假日'" type="button" class="btn eventbtn1" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                            <button v-if="ei.type == '課程'" type="button" class="btn eventbtn2" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                            <button v-if="ei.type == '生活'" type="button" class="btn eventbtn3" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                        </template>
+                    </template>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
+<style>
+.eventbtn1 {
+    position: absolute;
+    background-color: #FF0000;
+    border: none;
+    border-radius: 50%;
+    top: 50px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.eventbtn2 {
+    position: absolute;
+    background-color: #0000FF;
+    border: none;
+    border-radius: 50%;
+    top: 50px;
+    left: 20px;
+    width: 10px;
+    height: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.eventbtn3 {
+    position: absolute;
+    background-color: #00FF00;
+    border: none;
+    border-radius: 50%;
+    top: 50px;
+    left: 35px;
+    width: 10px;
+    height: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.reldiv{
+    position: relative;
+}
+</style>
