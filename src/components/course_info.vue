@@ -59,6 +59,12 @@ export default {
         },
         edit :function(){
             location.href='../course_edit/course_edit.html?course_ID=' + this.class_ID + "&class=" + this.class;
+        },
+        clickYes: function(){
+            document.getElementById('textDisplay').innerHTML="<h4 class='fw-bolder'>感謝您的喜歡</h4>";
+        },
+        clickNo: function(){
+            document.getElementById('textDisplay').innerHTML="<h4 class='fw-bolder'>感謝您的回覆<br>我們會持續改進</h4>";
         }
     },
     mounted: function () {
@@ -104,15 +110,20 @@ export default {
                             <div class="container border">
                                 <div class="pr-4 pt-3 mb-4">
                                     <div class="text-dark fw-bold fs-4">
-                                        你會對這堂課感興趣嗎?
+                                        <h4 class="fw-bolder" style="float:left;">你喜歡這門課嗎?</h4>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="row" id="textDisplay">
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn btn-success" id="yes" @click="clickYes">是</button>
+                                        </div>
+                                        <div class="offset-md-2 col-md-1">
+                                            <button type="button" class="btn btn-danger" id="no" @click="clickNo">否</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="pr-4 mb-4">
-                                    <div class="text-dark fw-bold fs-4">
-                                        與該課程相似:
-                                    </div>
-                                </div>
-                                <hr>
+                                <br>
                                 <div class="pr-4 pt-3 mb-4">
                                     <div class="text-dark fw-bold fs-4">
                                         <h4 class="fw-bolder" style="float:left;" v-bind:id="getAvg()">學生評價:&nbsp&nbsp{{this.star}}&nbsp&nbsp</h4>

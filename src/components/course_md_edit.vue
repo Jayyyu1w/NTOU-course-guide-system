@@ -37,7 +37,7 @@ export default {
     axios.get(links).then((res) => {
       let ret = res.data;
       console.log(ret);
-      this.text = ret.information;
+      this.text = ret[0].information;
     });
   },
   methods: {
@@ -46,11 +46,9 @@ export default {
       let postData = { "text": v };
       let postd = JSON.stringify(postData);
       console.log(postd);
-      axios.post('https://database--project.000webhostapp.com/course_md_edit.php', postd).then((res) => {
-        console.log(res);
-        h.then((html) => {
-          console.log(html);
-        })
+      let links = "https://database--project.000webhostapp.com/course_md_edit.php?course_ID=" + this.class_ID + "&class=" + this.class;
+      axios.post(links, postd).then((res) => {
+        
       });
     },
     mounted: function () {
