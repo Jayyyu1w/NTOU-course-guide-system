@@ -30,7 +30,7 @@ export default ({
     <section id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
             <div class="container mt-1 mb-1">
-                <a class="navbar-brand header_font" href="index.html">資工課程導覽</a>
+                <a class="navbar-brand header_font" href="../index.html">資工課程導覽</a>
                 <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
                     <img src="../imgsrc/ntou.png" width="150" height="30" alt="">
                 </a>

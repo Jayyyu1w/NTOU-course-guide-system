@@ -14,6 +14,7 @@ export default {
             t: new Date().getFullYear(),
             n: new Date().getMonth() + 1,
             cal_width: 450,
+            event_info: Array(32),
             blank_css: {
                 ".blank": "",
             },
@@ -145,6 +146,14 @@ export default {
         }
     },
     mounted: function () {
+        let postData = { "year" : `${this.t}`, "month" : `${this.n}` };
+        let postd = JSON.stringify(postData);
+        console.log(this.t);
+        console.log(this.n);
+        axios.post('https://database--project.000webhostapp.com/get_calendar.php', postd).then((res) => {
+            let ret = res.data;
+            console.log(res);
+        })
         this.construct();
     },
 }
