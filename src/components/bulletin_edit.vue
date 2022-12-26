@@ -40,6 +40,7 @@ export default ({
             this.submit.class_name=this.$refs.class_name.value;
             this.submit.sender=this.$refs.sender.value;
             this.submit.receiver=this.$refs.receiver.value;
+            this.submit.class=this.$refs.class.value;
             this.submit.content=this.$refs.content.value;
             this.submit.time=yy+'-'+mm+'-'+dd+' '+hh+':'+mf+':'+ss
             this.submit.bulletin_ID=String(this.sz+1); // if you modify this billetin, why sz+1
@@ -73,7 +74,16 @@ export default ({
                         <option selected></option>
                         <option v-bind:value="course.name" v-for="course in courses">{{course.name}}</option>
                     </select>
-                    <div id="class_help" class="form-text">請輸入課程名稱</div>
+                    <div id="class_help" class="form-text">請選擇課程名稱</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">班級</label>
+                    <select class="form-select" aria-label="Default select example" ref="class">
+                        <option selected></option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                    <div id="class_id_help" class="form-text">請選擇班級</div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">發布者</label>

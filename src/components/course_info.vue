@@ -22,7 +22,8 @@ export default {
             class_ID: "",
             class: "",
             class_name: "",
-            star: 0
+            star: 0,
+            authorization: 0
         }
     },
     created: function () {
@@ -39,6 +40,7 @@ export default {
                 this.text = info['information'];
                 this.class_name = info['name'];
                 this.hot=info['hot'];
+                this.authorization=window.sessionStorage.getItem('authorization');
                 console.log(this.hot);
             })
         axios.get(links2)
@@ -55,6 +57,9 @@ export default {
             this.star=(avg*1).toFixed(2);
             return "star"+this.star;
         },
+        edit :function(){
+            location.href='../course_edit/course_edit.html?course_ID=' + this.class_ID + "&class=" + this.class;
+        }
     },
     mounted: function () {
         
@@ -82,6 +87,11 @@ export default {
                                 <div class="row h-100 pr-4 pt-3 mb-4">
                                     <div class="text-dark fw-bold cinfo">
                                         課程資訊
+                                    </div>
+                                </div>
+                                <div v-if="this.authorization==1">
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-secondary" @click="edit" style="float:center">編輯課程</button>
                                     </div>
                                 </div>
                                 <div id="md-editor" class="container">
