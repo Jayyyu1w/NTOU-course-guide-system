@@ -1,0 +1,1 @@
+$(window).scroll(function(){$(window).scrollTop()<=230?($("#navbar").removeClass("fixed-top"),$("#fixpos").css("height","0px")):($("#navbar").addClass("fixed-top"),$("#fixpos").css("height","76px"))});const s="/NTOU-course-guide-system/assets/ntou-5f01a67a.png";export{s as _};
