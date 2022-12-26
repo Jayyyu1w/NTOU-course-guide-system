@@ -9,7 +9,8 @@ export default ({
             grade_4: [],
             display_course: [],
             no_course: false,
-            keyword: ""
+            keyword: "",
+            authorization: 0
         }
     },
     created: function () {
@@ -28,6 +29,7 @@ export default ({
                         this.grade_4.push(item);
                 }
                 this.display_course = this.grade_1;
+                this.authorization=window.sessionStorage.getItem('authorization');
                 console.log(this.course_info);
                 console.log(this.grade_1);
                 console.log(this.grade_2);
@@ -50,6 +52,9 @@ export default ({
         changeWeb: function (dis) {
             window.location.href = `../course_info/course_info.html?course_ID=${dis.course_ID}&class=${dis.class}`;
         },
+        edit :function(){
+            location.href='../course_edit/course_edit.html';
+        }
     },
     mounted: function () {
 
@@ -58,9 +63,17 @@ export default ({
 </script>
 
 <template>
-    <div class="container mb-5" id="courses">
-        <p class="title">所有課程</p>
-        <div class="row">
+    <div class="container" id="courses">
+        
+        <div class="text-center">
+            <h3 class="fw-bolder">所有課程</h3>
+        </div>
+        <div v-if="this.authorization==1">
+            <div class="text-center">
+                <button type="button" class="btn btn-secondary" @click="edit" style="float:center">編輯課程</button>
+            </div>
+        </div>
+        <div class="row mt-3">
             <div class="col-md-8">
                 <form class="d-flex round-top">
                     <input class="form-control me-2" type="search" placeholder="keyword" v-model="keyword"
