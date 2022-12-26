@@ -7,10 +7,15 @@ export default ({
     },
     created: function () {
         this.userName=window.sessionStorage.getItem('userName');
-        //console.log(name);
+        console.log(this.userName);
     },
     methods: {
-        
+        logout :function(){
+            window.sessionStorage.removeItem('userName');
+            window.sessionStorage.removeItem('authorization');
+            this.userName=null;
+            location.href='index.html';
+        }
     },
     mounted: function () {
 
@@ -50,13 +55,18 @@ export default ({
                             <a class="nav-link" href="./bulletin/bulletin.html">所有公告</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <div v-if="this.userName!=null">
+                            <div v-if="this.userName!=null&&this.userName!='登入失敗!'">
                                 <a class="nav-link" href="#">({{ userName }})</a>
                             </div>
                             <div v-else>
                                 <a class="nav-link" href="./login/login.html" >登入</a>
                             </div>
                         </li>
+                        <div v-if="this.userName!=null&&this.userName!='登入失敗!'">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" @click="logout">登出</a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>

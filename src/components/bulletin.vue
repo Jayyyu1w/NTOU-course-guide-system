@@ -7,10 +7,12 @@ export default ({
             pageSize: 10,
             curPage: 1,
             cut: [],
-            totPage: 0
+            totPage: 0,
+            authorization: 0
         }
     },
     created: function () {
+        //console.log(this.authorization);
         axios.get("https://database--project.000webhostapp.com/bulletin.php")
             .then((res) => {
                 this.bulletin_info=res.data;
@@ -23,6 +25,8 @@ export default ({
                 this.slice(1);
                 this.totPage=Math.ceil(this.totBulletin/this.pageSize);
                 console.log(this.totPage);
+                this.authorization=window.sessionStorage.getItem('authorization');
+                console.log(this.authorization);
             })
     },
     methods: {
@@ -31,6 +35,9 @@ export default ({
             console.log(cur);
             this.curPage=cur;
             this.cut=this.bulletin_info.slice((this.curPage*this.pageSize)-this.pageSize,(this.curPage*this.pageSize))
+        },
+        edit :function(){
+            location.href='../bulletin_edit/bulletin_edit.html';
         }
     },
     mounted: function () {
@@ -45,9 +52,12 @@ export default ({
                 <div class="row">
                     <div class="text-center">
                         <h3 class="fw-bolder">所有公告</h3>
+                        <div v-if="this.authorization==1">
+                            <button type="button" class="btn btn-secondary" @click="edit">發布公告</button>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="accordion" id="bulletin">
                         <div v-for="info in cut">
                             <div class="accordion-item">

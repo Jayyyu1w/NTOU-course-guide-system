@@ -4,7 +4,7 @@
             return {
                 submit: {
                     account: "",
-                    password: ""
+                    password: "",
                 },
             }
         },
@@ -14,12 +14,16 @@
                 this.submit.password=this.$refs.password.value;
                 var out=JSON.stringify(this.submit);
                 console.log(out);
-                var name;
+                var name,authorization;
                 axios.post('https://database--project.000webhostapp.com/login.php', out).then((res) => {
-                    //console.log(res.data);
-                    name=res.data;
+                    console.log(res.data);
+                    var input=res.data;
+                    name=input.user_name;
+                    authorization=input.authorization;
                     console.log(name);
+                    console.log(authorization);
                     window.sessionStorage.setItem("userName",name);
+                    window.sessionStorage.setItem("authorization",authorization);
                     location.href='../index.html';
                 });
                 //console.log(window.sessionStorage);
