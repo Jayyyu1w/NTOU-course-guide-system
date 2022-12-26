@@ -28,6 +28,18 @@ export default {
       toolbarsExclude: ['image', 'htmlPreview', 'github'],
     }
   },
+  created: function () {
+    let getUrlString = location.href;
+    let url = new URL(getUrlString);
+    this.class_ID = url.searchParams.get('course_ID');
+    this.class = url.searchParams.get('class');
+    let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
+    axios.get(links).then((res) => {
+      let ret = res.data;
+      console.log(ret);
+      this.text = ret.information;
+    });
+  },
   methods: {
     onSave: function (v, h) {
       console.log(v);

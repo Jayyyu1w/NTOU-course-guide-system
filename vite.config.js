@@ -17,6 +17,7 @@ export default defineConfig({
         main: resolve(root, 'index.html'),
         all_course: resolve(root, 'all_course', 'all_course.html'),
         bulletin: resolve(root, 'bulletin', 'bulletin.html'),
+        bulletin_edit: resolve(root, 'bulletin_edit', 'bulletin_edit.html'),
         course_edit: resolve(root, 'course_edit', 'course_edit.html'),
         course_info: resolve(root, 'course_info', 'course_info.html'),
         login: resolve(root, 'login', 'login.html'),

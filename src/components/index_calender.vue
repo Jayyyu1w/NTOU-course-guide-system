@@ -153,7 +153,7 @@ export default {
         axios.post('https://database--project.000webhostapp.com/get_calendar.php', postd).then((res) => {
             let ret = res.data;
             console.log(res);
-        })
+        });
         this.construct();
     },
 }
