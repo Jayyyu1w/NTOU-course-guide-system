@@ -29,7 +29,7 @@ export default ({
             let ss = new Date().getSeconds()<10 ? '0'+new Date().getSeconds() : new Date().getSeconds();
             this.submit.text=this.$refs.text.value;
             this.submit.hot=this.star;
-            this.submit.time=yy+'-'+mm+'-'+dd+' '+hh+':'+mf+':'+ss
+            this.submit.time=yy+'-'+mm+'-'+dd+' '+hh+':'+mf+':'+ss;
             var out=JSON.stringify(this.submit);
             console.log(out);
             var links="https://database--project.000webhostapp.com/message_add.php?course_ID=" + this.class_ID + "&class=" + this.class;

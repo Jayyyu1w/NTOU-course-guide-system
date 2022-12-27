@@ -20,9 +20,9 @@ export default ({
                 this.top_info[0].img = this.imgs[0];
                 this.top_info[1].img = this.imgs[1];
                 this.top_info[2].img = this.imgs[2];
-                this.top_info[0].star = this.top_info[0].hot;
-                this.top_info[1].star = this.top_info[1].hot;
-                this.top_info[2].star = this.top_info[2].hot;
+                this.top_info[0].star = this.top_info[0].hot.toFixed(2);
+                this.top_info[1].star = this.top_info[1].hot.toFixed(2);
+                this.top_info[2].star = this.top_info[2].hot.toFixed(2);
                 console.log(this.top_info);
             })
     },
@@ -52,7 +52,7 @@ export default ({
                         style="width:23px; float: left;">
                     <h3 class="fw-bolder">&nbsp{{ course.name }}</h3>
                     <h6>教師：{{ course.teacher }}</h6>
-                    <h6 class="fw-bolder" style="float:left;">{{ course.hot }}&nbsp&nbsp&nbsp</h6>
+                    <h6 class="fw-bolder" style="float:left;">{{ course.star }}&nbsp&nbsp&nbsp</h6>
                     <div class="rating" style="float:left;">
                         <div v-if="course.star >= 5"><label for="5" class="display">☆</label></div>
                         <div v-else><label for="5" class="no_display">☆</label></div>
