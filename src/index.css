@@ -12,10 +12,6 @@
     font-size: 28px
 }
 
-ul {
-    list-style-type: none;
-}
-
 .title_decoration {
     background: linear-gradient(to right, #233559 0, #233559 10px, #F0F0F0 10px, #F0F0F0 100%);
     color: black;
