@@ -206,6 +206,10 @@ export default {
                                 data-bs-toggle="tooltip" data-bs-placement="top" :title="ei.event_name">
                                 &nbsp;
                             </button>
+                            <button v-if="ei.type == '考試'" type="button" class="btn eventbtn4" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
                         </template>
                     </template>
                 </div>
@@ -222,6 +226,10 @@ export default {
                                 &nbsp;
                             </button>
                             <button v-if="ei.type == '生活'" type="button" class="btn eventbtn3" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
+                                &nbsp;
+                            </button>
+                            <button v-if="ei.type == '考試'" type="button" class="btn eventbtn4" data-bs-toggle="tooltip"
                                 data-bs-placement="top" :title="ei.event_name">
                                 &nbsp;
                             </button>
@@ -267,6 +275,19 @@ export default {
     border-radius: 50%;
     top: 50px;
     left: 35px;
+    width: 10px;
+    height: 10px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.eventbtn4 {
+    position: absolute;
+    background-color: #FF00FF;
+    border: none;
+    border-radius: 50%;
+    top: 50px;
+    left: 50px;
     width: 10px;
     height: 10px;
     margin: 0px;
