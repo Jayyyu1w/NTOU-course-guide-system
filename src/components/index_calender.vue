@@ -42,7 +42,16 @@ export default {
                 "height": ``,
                 "background-color": "#E8E8E8",
             },
+            cal_cont: {
+                "max-width": ``,
+            },
         }
+    },
+    created() {
+        window.addEventListener("resize", this.resizeHandler);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeHandler);
     },
     methods: {
         checkDays: function (d) {
@@ -97,6 +106,7 @@ export default {
             this.today_content["background-color"] = `${this.cal_color[this.n - 1]}`;
             this.blank_content["width"] = `${sz}px`;
             this.blank_content["height"] = `${sz}px`;
+            this.cal_cont["max-width"] = `${this.cal_width}px`;
         },
         construct: function () {
             this.genWeek();
@@ -168,8 +178,15 @@ export default {
                 console.log(this.event_info);
             });
         },
+        resizeHandler() {
+            this.cal_width = this.$refs.calendar.clientWidth * 0.7;
+            console.log(this.cal_width);
+            this.setStyle();
+        },
     },
     mounted: function () {
+        this.cal_width = this.$refs.calendar.clientWidth * 0.7;
+        console.log(this.cal_width);
         this.getEvent();
         this.construct();
     },
@@ -177,7 +194,7 @@ export default {
 </script>
 
 <template>
-    <div id="calendar">
+    <div id="calendar" ref="calendar">
         <div id="calendar_header" :style="header_css">
             <span class="icon-chevron-left" @click="prevMonth">
                 &lt; </span>
@@ -187,7 +204,7 @@ export default {
         <div id="calendar_weekdays">
             <div v-for="wdays of weekdays" :style="default_css">{{ wdays }}</div>
         </div>
-        <div id="calendar_content">
+        <div id="calendar_content" :style="cal_cont">
             <div v-for="eday of monthdays">
                 <div v-if='eday == " "' :style="blank_content"></div>
                 <div v-else-if="checkDays(eday)" :style="today_content" class="reldiv">
@@ -198,12 +215,12 @@ export default {
                                 data-bs-placement="top" :title="ei.event_name">
                                 &nbsp;
                             </button>
-                            <button v-if="ei.type == '課程'" type="button" class="btn eventbtn2"
-                                data-bs-toggle="tooltip" data-bs-placement="top" :title="ei.event_name">
+                            <button v-if="ei.type == '課程'" type="button" class="btn eventbtn2" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
                                 &nbsp;
                             </button>
-                            <button v-if="ei.type == '生活'" type="button" class="btn eventbtn3"
-                                data-bs-toggle="tooltip" data-bs-placement="top" :title="ei.event_name">
+                            <button v-if="ei.type == '生活'" type="button" class="btn eventbtn3" data-bs-toggle="tooltip"
+                                data-bs-placement="top" :title="ei.event_name">
                                 &nbsp;
                             </button>
                             <button v-if="ei.type == '考試'" type="button" class="btn eventbtn4" data-bs-toggle="tooltip"
@@ -238,17 +255,48 @@ export default {
                 </div>
             </div>
         </div>
+        <div class="annotation">
+            <ul>
+                <li id="holiday">假日</li>
+                <li id="course">課程</li>
+                <li id="life">生活</li>
+                <li id="test">考試</li>
+            </ul>
+        </div>
     </div>
 </template>
 
 <style>
+.annotation {
+    float: right;
+    font-size: 28px;
+    padding-right: 10%;
+}
+
+#holiday::marker {
+    color: red;
+    font-size: 1.2em;
+}
+#course::marker {
+    color: blue;
+    font-size: 1.2em;
+}
+#life::marker {
+    color: green;
+    font-size: 1.2em;
+}
+#test::marker {
+    color: #FF00FF;
+    font-size: 1.2em;
+}
+
 .eventbtn1 {
     position: absolute;
     background-color: #FF0000;
     border: none;
     border-radius: 50%;
-    top: 50px;
-    left: 5px;
+    top: 80%;
+    left: 5%;
     width: 10px;
     height: 10px;
     margin: 0px;
@@ -260,8 +308,8 @@ export default {
     background-color: #0000FF;
     border: none;
     border-radius: 50%;
-    top: 50px;
-    left: 20px;
+    top: 80%;
+    left: 25%;
     width: 10px;
     height: 10px;
     margin: 0px;
@@ -273,8 +321,8 @@ export default {
     background-color: #00FF00;
     border: none;
     border-radius: 50%;
-    top: 50px;
-    left: 35px;
+    top: 80%;
+    left: 45%;
     width: 10px;
     height: 10px;
     margin: 0px;
@@ -286,15 +334,15 @@ export default {
     background-color: #FF00FF;
     border: none;
     border-radius: 50%;
-    top: 50px;
-    left: 50px;
+    top: 80%;
+    left: 65%;
     width: 10px;
     height: 10px;
     margin: 0px;
     padding: 0px;
 }
 
-.reldiv{
+.reldiv {
     position: relative;
 }
 </style>

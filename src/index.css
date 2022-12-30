@@ -26,7 +26,7 @@
 }
 
 #calendar {
-    margin-left: 13%;
+    margin-left: 3%;
     font-family: 'Lato', sans-serif;
     user-select: none;
 }
@@ -40,7 +40,6 @@
 #calendar_weekdays,
 #calendar_header {
     position: relative;
-    width: 480px;
     overflow: hidden;
     float: left;
     z-index: 10;
@@ -48,6 +47,7 @@
 
 #calendar_weekdays div,
 #calendar_content div {
+    float: left;
     align-content: center;
     overflow: hidden;
     text-align: center;
@@ -59,10 +59,6 @@
     -webkit-border-radius: 0px 0px 12px 12px;
     -moz-border-radius: 0px 0px 12px 12px;
     border-radius: 0px 0px 12px 12px;
-}
-
-#calendar_content div {
-    float: left;
 }
 
 #calendar_content div:hover {
@@ -86,8 +82,6 @@
 
 #calendar_header {
     display:flex;
-    width: 480px;
-    height: 68.56px;
     text-align: center;
     background-color: #FF6860;
     padding: 18px 0;
@@ -106,12 +100,15 @@
 }
 
 span[class^=icon-chevron] {
+    display:flex;
+    justify-content: center;
+    align-items: center;
     color: #FFFFFF;
     float: left;
     font-weight:bold;
     font-size: 24px;
     width: 15%;
+    text-align: center;
     border-radius: 50%;
-    padding-bottom: 5%;
     cursor: pointer;
 }
