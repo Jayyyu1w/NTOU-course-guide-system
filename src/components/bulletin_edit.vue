@@ -8,7 +8,7 @@ export default ({
                 //course_ID: 1,
                 class: 'A',
                 class_name: "",
-                sender: "",
+                //sender: "",
                 receiver: "",
                 time: "",
                 bulletin_ID: ""
@@ -38,7 +38,7 @@ export default ({
             let ss = new Date().getSeconds()<10 ? '0'+new Date().getSeconds() : new Date().getSeconds();
             this.submit.title=this.$refs.title.value;
             this.submit.class_name=this.$refs.class_name.value;
-            this.submit.sender=this.$refs.sender.value;
+            this.submit.sender=window.sessionStorage.getItem('userName');;
             this.submit.receiver=this.$refs.receiver.value;
             this.submit.class=this.$refs.class.value;
             this.submit.content=this.$refs.content.value;
@@ -85,11 +85,11 @@ export default ({
                     </select>
                     <div id="class_id_help" class="form-text">請選擇班級</div>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label class="form-label">發布者</label>
                     <input type="text" class="form-control" ref="sender" aria-describedby="sender_help">
                     <div id="sender_help" class="form-text">請輸入發布者</div>
-                </div>
+                </div> -->
                 <div class="mb-3">
                     <label class="form-label">接收對象</label>
                     <input type="text" class="form-control" ref="receiver" aria-describedby="receiver_help">
