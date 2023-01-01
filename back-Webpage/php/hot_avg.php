@@ -2,7 +2,7 @@
     include 'connect.php';
     $course_ID = $_GET['course_ID']; 
     $class = $_GET['class'];
-    $query = ("select avg(hot) as avg from message where course_ID = ? and class = ?");
+    $query = ("select avg(hot) as avg, count(mess_ID) as cnt from message where course_ID = ? and class = ?");
     $stmt = $db->prepare($query);
     try{
         $error = $stmt->execute(array($course_ID,$class));
@@ -12,10 +12,10 @@
         Print "資料讀取失敗:" . $e->getMessage();
     }
     
-    $update = ("update course_information set hot=? where course_ID=? and class=?");
+    $update = ("update course_information set hot=?, count=? where course_ID=? and class=?");
     $stmt = $db->prepare($update);
     try{
-        $error = $stmt->execute(array((float)$result[0]['avg'],$course_ID,$class));
+        $error = $stmt->execute(array((float)$result[0]['avg'],$result[0]['cnt'],$course_ID,$class));
         $result = $stmt->fetchAll();
     }catch(PDOException $e){
         Print "資料更新失敗:" . $e->getMessage();

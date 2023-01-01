@@ -1,3 +1,4 @@
+<!-- Unused -->
 <?php
     include 'connect.php';
     $course_ID = $_GET['course_ID']; 
