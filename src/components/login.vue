@@ -18,12 +18,18 @@
                 axios.post('https://database--project.000webhostapp.com/login.php', out).then((res) => {
                     console.log(res.data);
                     var input=res.data;
+                    console.log(input);
+                    if(input == '登入失敗!'){
+                        alert('帳號或密碼錯誤!');
+                        return;
+                    }
                     name=input.user_name;
                     authorization=input.authorization;
                     console.log(name);
                     console.log(authorization);
                     window.sessionStorage.setItem("userName",name);
                     window.sessionStorage.setItem("authorization",authorization);
+                    alert(`歡迎${name}登入`);
                     location.href='../index.html';
                 });
                 //console.log(window.sessionStorage);
