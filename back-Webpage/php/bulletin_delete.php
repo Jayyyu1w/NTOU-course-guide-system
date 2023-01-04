@@ -5,6 +5,7 @@
     $stmt = $db->prepare($delete);
     try{
         $error = $stmt->execute(array($postData['bulletin_ID']));
+        echo "success";
     }catch(PDOException $e){
         Print "公告刪除失敗:" . $e->getMessage();
     }
