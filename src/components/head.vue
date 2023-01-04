@@ -2,7 +2,8 @@
 export default ({
     data: function () {
         return {
-            userName: null
+            userName: null,
+            authorization: null,
         }
     },
     created: function () {
@@ -56,7 +57,7 @@ export default ({
                             <a class="nav-link" href="../bulletin/bulletin.html">所有公告</a>
                         </li>
                         <li class="nav-item">
-                            <div v-if="this.userName!=null&&this.userName!='登入失敗!'">
+                            <div v-if="this.userName!=null">
                                 <a v-if="this.authorization==1" class="nav-link" href="https://database--project.000webhostapp.com/get_log_2.php">({{ userName }})</a>
                                 <a v-else class="nav-link" href="#">({{ userName }})</a>
                             </div>
@@ -64,7 +65,7 @@ export default ({
                                 <a class="nav-link" href="../login/login.html" >登入</a>
                             </div>
                         </li>
-                        <div v-if="this.userName!=null&&this.userName!='登入失敗!'">
+                        <div v-if="this.userName!=null">
                             <li class="nav-item">
                                 <a class="nav-link" href="#" @click="logout">登出</a>
                             </li>
