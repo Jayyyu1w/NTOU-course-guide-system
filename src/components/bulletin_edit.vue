@@ -48,8 +48,15 @@ export default ({
             console.log(out);
             axios.post('https://database--project.000webhostapp.com/bulletin_add.php', out).then((res) => {
                 console.log(res);
+                let ret = res.data;
+                if(ret == 'success'){
+                    alert('新增成功');
+                    location.href='../bulletin/bulletin.html';
+                }
+                else{
+                    alert(ret);
+                }
             });
-            location.href='../bulletin/bulletin.html';
         }
     },
     mounted: function () {
