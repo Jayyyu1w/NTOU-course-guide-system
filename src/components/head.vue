@@ -7,6 +7,7 @@ export default ({
     },
     created: function () {
         this.userName = window.sessionStorage.getItem('userName');
+        this.authorization = window.sessionStorage.getItem('authorization');
         console.log(this.userName);
     },
     methods: {
@@ -56,7 +57,8 @@ export default ({
                         </li>
                         <li class="nav-item">
                             <div v-if="this.userName!=null&&this.userName!='登入失敗!'">
-                                <a class="nav-link" href="#">({{ userName }})</a>
+                                <a v-if="this.authorization==1" class="nav-link" href="https://database--project.000webhostapp.com/get_log_2.php">({{ userName }})</a>
+                                <a v-else class="nav-link" href="#">({{ userName }})</a>
                             </div>
                             <div v-else>
                                 <a class="nav-link" href="../login/login.html" >登入</a>
