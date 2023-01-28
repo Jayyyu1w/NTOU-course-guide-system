@@ -8,14 +8,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@vavt/md-editor-extension": "^1.5.0",
+    "axios": "^1.2.6",
+    "element-plus": "^2.2.28",
+    "jquery": "^3.6.3",
     "json-server": "^0.17.1",
     "md-editor-v3": "^2.7.2",
-    "pinia": "^2.0.28",
+    "pinia": "^2.0.29",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "bootstrap": "^5.3.0-alpha1",
     "vite": "^4.0.0"
   }
 }

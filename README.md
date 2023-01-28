@@ -14,3 +14,8 @@ Vue3+Vite
 
 * 使用本地端：xampphtdocs
 * 使用線上端：[NTOU-course-guide-system](https://jayyyu1w.github.io/NTOU-course-guide-system/)
+
+---------------------------------------
+SPA更改進度
+Day1：
+首頁更改完畢

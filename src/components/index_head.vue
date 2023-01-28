@@ -1,4 +1,5 @@
 <script>
+import { RouterLink, RouterView } from 'vue-router';
 export default ({
     data: function () {
         return {
@@ -37,9 +38,9 @@ export default ({
     <section id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
             <div class="container mt-1 mb-1">
-                <a class="navbar-brand header_font" href="index.html">資工課程導覽</a>
+                <RouterLink class="navbar-brand header_font" to="/">資工課程導覽</RouterLink>
                 <a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
-                    <img src="../imgsrc/ntou.png" width="150" height="30" alt="">
+                    <img src="../assets/ntou.png" width="150" height="30" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,13 +49,13 @@ export default ({
                 <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">首頁</a>
+                            <RouterLink class="nav-link active" aria-current="page" to="/">首頁</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./all_course/all_course.html">所有課程</a>
+                            <RouterLink class="nav-link" to="/all_course">所有課程</RouterLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./bulletin/bulletin.html">所有公告</a>
+                            <RouterLink class="nav-link" to="/bulletin">所有公告</RouterLink>
                         </li>
                         <li class="nav-item dropdown">
                             <div v-if="this.userName!=null">
@@ -62,7 +63,7 @@ export default ({
                                 <a v-else class="nav-link" href="#">({{ userName }})</a>
                             </div>
                             <div v-else>
-                                <a class="nav-link" href="./login/login.html" >登入</a>
+                                <RouterLink class="nav-link" to="/login" >登入</RouterLink>
                             </div>
                         </li>
                         <div v-if="this.userName!=null">
@@ -78,4 +79,17 @@ export default ({
 </template>
 
 <style>
+#banner .masthead {
+    height: 20vh;
+    min-height: 230px;
+    background-image: url('../assets/banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header_font {
+    font-weight: bold;
+    font-size: 28px
+}
 </style>
