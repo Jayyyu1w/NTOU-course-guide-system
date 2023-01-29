@@ -20,12 +20,24 @@ const router = createRouter({
     {
       path: '/bulletin',
       name: 'bulletin',
-      component: () => import('../views/BulletinView.vue')
+      component: () => import('../views/BulletinView.vue'),
+      children: [
+        {
+          path: 'bulletin_edit',
+          name: 'bulletin_edit',
+          component: () => import('../views/BulletinEditView.vue')
+        }
+      ],
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
+    },
+    { //404Error
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 })

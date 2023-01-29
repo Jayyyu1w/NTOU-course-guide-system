@@ -1,15 +1,15 @@
+<script setup>
+import navbars from '../components/head.vue'
+import bulletin from '../components/bulletin.vue'
+</script>
+
 <template>
-	<div class="about">
-		<h1>This is an bulletin page</h1>
-	</div>
+	<navbars></navbars>
+	<div id="fixpos"></div>
+	<section id="bulletin">
+		<bulletin></bulletin>
+	</section>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-	.about {
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-	}
-}
 </style>

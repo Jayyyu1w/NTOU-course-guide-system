@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+
 export default ({
     data: function () {
         return {
@@ -51,7 +53,7 @@ export default ({
                 let ret = res.data;
                 if(ret == 'success'){
                     alert('新增成功');
-                    location.href='../bulletin/bulletin.html';
+                    this.$router.replace('/bulletin');
                 }
                 else{
                     alert(ret);

@@ -19,3 +19,6 @@ Vue3+Vite
 SPA更改進度
 Day1：
 首頁更改完畢
+
+Day2：
+公告以及登入部分完成，加入404NotFound(待設計)
