@@ -1,15 +1,12 @@
 <script setup>
-import indexheader from '../components/index_head.vue'
+import navbar from '../components/head.vue'
 import calendar from '../components/calendar.vue'
 import indexbulletin from '../components/index_bulletin.vue'
 import indexhot from '../components/index_hot.vue'
 </script>
 
 <template>
-	<div>
-		<indexheader></indexheader>
-	</div>
-	<div id="head"></div>
+	<navbar />
 	<div id="fixpos"></div>
 	<section id="content">
 		<div class="container my-5">
@@ -23,7 +20,7 @@ import indexhot from '../components/index_hot.vue'
 										<div class="title_decoration row h-100 px-4 mb-4">
 											最新公告
 										</div>
-										<indexbulletin></indexbulletin>
+										<indexbulletin />
 										<div id="notification">
 											<a href="bulletin/bulletin.html" class="more">>&nbsp;更多...</a>
 										</div>
@@ -32,7 +29,7 @@ import indexhot from '../components/index_hot.vue'
 										<div class="title_decoration row h-100 px-4 mb-4">
 											重要時程
 										</div>
-										<calendar></calendar>
+										<calendar />
 									</div>
 								</div>
 							</div>
@@ -43,7 +40,7 @@ import indexhot from '../components/index_hot.vue'
 								<div class="title_decoration row h-100 px-4 mb-4">
 									熱門課程
 								</div>
-								<indexhot></indexhot>
+								<indexhot />
 							</div>
 						</div>
 					</div>

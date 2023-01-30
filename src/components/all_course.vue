@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
@@ -52,7 +53,7 @@ export default ({
 			console.log(this.display_course);
 		},
 		changeWeb: function (dis) {
-			router.push({path: '', query: {course_ID:`${dis.course_ID}`, class:`${dis.class}`}});
+			this.$router.push({ path: '/course_info', query: { course_ID: dis.course_ID, class: dis.class } });
 		},
 	},
 	mounted: function () {

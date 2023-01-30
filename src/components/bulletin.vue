@@ -41,9 +41,6 @@ export default ({
 			this.curPage = cur;
 			this.cut = this.bulletin_info.slice((this.curPage * this.pageSize) - this.pageSize, (this.curPage * this.pageSize))
 		},
-		edit: function () {
-			location.href = '../bulletin_edit/bulletin_edit.html';
-		},
 		del_bulletin: function () {
 			console.log("delete");
 			let ret = JSON.stringify({ "bulletin_ID": this.bulletin_ID });
@@ -52,7 +49,7 @@ export default ({
 					console.log(res.data);
 					if (res.data == "success") {
 						alert("刪除成功");
-						location.href = '../bulletin/bulletin.html';
+						this.$router.replace('/bulletin/main');
 					}
 					else {
 						alert("刪除失敗");
@@ -73,7 +70,8 @@ export default ({
 				<div class="text-center">
 					<h3 class="fw-bolder">所有公告</h3>
 					<div v-if="this.authorization == 1">
-						<button type="button" class="btn btn-secondary" @click="edit">發布公告</button>
+						<RouterLink to="/bulletin/edit"><button type="button" class="btn btn-secondary">發布公告</button>
+						</RouterLink>
 					</div>
 				</div>
 			</div>
@@ -133,6 +131,7 @@ export default ({
 			</div>
 		</div>
 	</div>
+	<RouterView />
 </template>
 
 <style>

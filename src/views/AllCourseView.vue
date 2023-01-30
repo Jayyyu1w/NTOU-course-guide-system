@@ -4,7 +4,7 @@ import all_course from '../components/all_course.vue'
 </script>
 
 <template>
-  <navbars></navbars>
+  <navbars />
   <div id="fixpos"></div>
   <section id="all_course">
     <div class="container mt-5">
@@ -13,7 +13,7 @@ import all_course from '../components/all_course.vue'
           <div class="row">
             <div class="offset-md-1 col-md-10">
               <div class="container mb-5">
-                <all_course></all_course>
+                <all_course />
               </div>
             </div>
           </div>

@@ -18,14 +18,24 @@ const router = createRouter({
       component: () => import('../views/AllCourseView.vue')
     },
     {
+      path: '/course_info',
+      name: 'course_info',
+      component: () => import('../views/CourseInfoView.vue'),
+    },
+    {
       path: '/bulletin',
       name: 'bulletin',
       component: () => import('../views/BulletinView.vue'),
       children: [
         {
-          path: 'bulletin_edit',
-          name: 'bulletin_edit',
-          component: () => import('../views/BulletinEditView.vue')
+          path: 'main',
+          name: 'main',
+          component: () => import('../components/bulletin.vue')
+        },
+        {
+          path: 'edit',
+          name: 'edit',
+          component: () => import('../components/bulletin_edit.vue')
         }
       ],
     },
