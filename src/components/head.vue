@@ -53,10 +53,10 @@ export default ({
 							<RouterLink class="nav-link active" aria-current="page" to="/">首頁</RouterLink>
 						</li>
 						<li class="nav-item">
-							<RouterLink class="nav-link" to="/all_course">所有課程</RouterLink>
+							<RouterLink class="nav-link" to="/course/all">所有課程</RouterLink>
 						</li>
 						<li class="nav-item">
-							<RouterLink class="nav-link" to="/bulletin">所有公告</RouterLink>
+							<RouterLink class="nav-link" to="/bulletin/main">所有公告</RouterLink>
 						</li>
 						<li class="nav-item">
 							<div v-if="this.userName != null">

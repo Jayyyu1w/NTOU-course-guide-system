@@ -30,7 +30,13 @@ export default ({
 	},
 	methods: {
 		changeWeb: function (dis) {
-			window.location.href = `course_info/course_info.html?course_ID=${dis.course_ID}&class=${dis.class}`;
+			this.$router.push({
+				path: '/course/info/' + dis.course_ID,
+				query: {
+					course_ID: dis.course_ID,
+					class: dis.class
+				}
+			})
 		},
 		changeCardFront: function () {
 			this.curCard = this.card[1];

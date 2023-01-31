@@ -59,7 +59,8 @@ export default {
 			return "star" + this.star;
 		},
 		edit: function () {
-			location.href = '../course_edit/course_edit.html?course_ID=' + this.class_ID + "&class=" + this.class;
+			this.$router.push({ path: '/course/info/' + this.class_ID + '/edit', query: { course_ID: this.class_ID, class: this.class } });
+			//course_ID=' + this.class_ID + "&class=" + this.class;
 		},
 		clickYes: function () {
 			document.getElementById('textDisplay').innerHTML = "<h4 class='fw-bolder'>感謝您的喜歡</h4>";

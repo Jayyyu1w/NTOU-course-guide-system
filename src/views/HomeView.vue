@@ -6,7 +6,7 @@ import indexhot from '../components/index_hot.vue'
 </script>
 
 <template>
-	<navbar />
+	<div id="navi"><navbar /></div>
 	<div id="fixpos"></div>
 	<section id="content">
 		<div class="container my-5">

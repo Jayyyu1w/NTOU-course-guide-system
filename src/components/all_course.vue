@@ -53,7 +53,7 @@ export default ({
 			console.log(this.display_course);
 		},
 		changeWeb: function (dis) {
-			this.$router.push({ path: '/course_info', query: { course_ID: dis.course_ID, class: dis.class } });
+			this.$router.push({ path: '/course/info/' + dis.course_ID, query: { course_ID: dis.course_ID, class: dis.class } });
 		},
 	},
 	mounted: function () {
@@ -64,7 +64,6 @@ export default ({
 
 <template>
 	<div class="container" id="courses">
-
 		<div class="text-center">
 			<h3 class="fw-bolder">所有課程</h3>
 		</div>
