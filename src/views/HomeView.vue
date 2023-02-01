@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import navbar from '../components/head.vue'
 import calendar from '../components/calendar.vue'
 import indexbulletin from '../components/index_bulletin.vue'
@@ -21,7 +22,7 @@ import indexhot from '../components/index_hot.vue'
 										</div>
 										<indexbulletin />
 										<div id="notification">
-											<a href="bulletin/bulletin.html" class="more">>&nbsp;更多...</a>
+											<RouterLink to="/bulletin/main" class="more">>&nbsp;更多...</RouterLink>
 										</div>
 									</div>
 									<div class="container row-md-6 my-5">
