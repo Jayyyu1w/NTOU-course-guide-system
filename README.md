@@ -14,3 +14,20 @@ Vue3+Vite
 
 * 使用本地端：xampphtdocs
 * 使用線上端：[NTOU-course-guide-system](https://jayyyu1w.github.io/NTOU-course-guide-system/)
+
+---------------------------------------
+SPA更改進度
+Day1：
+首頁更改完畢
+
+Day2：
+公告以及登入部分完成，加入404NotFound(待設計)
+
+Day3：
+課程資訊以及公告新增完成
+
+Day4：
+所有頁面連接已完成，404NotFound頁面待設計以及菜單固定待完成
+
+Day5：
+菜單固定以及404NotFound設計完成
