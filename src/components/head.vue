@@ -4,14 +4,16 @@ import { useRouter, RouterLink, RouterView } from 'vue-router';
 import { useScroll } from '@vueuse/core'
 
 const router = useRouter();
-const userName = ref(window.sessionStorage.getItem('userName'));
-const authorization = ref(window.sessionStorage.getItem('authorization'));
+const userName = ref(null);
+const authorization = ref(null);
 const isSticky = ref(false);
 const isFix = ref(false);
 const el = ref < HTMLElement | null > (null);
 const { x, y, isScrolling, arrivedState, directions } = useScroll(el);
 
 onMounted(() => {
+	userName.value = window.sessionStorage.getItem('userName');
+	authorization.value = window.sessionStorage.getItem('authorization');
 	window.addEventListener('scroll', () => {
 		if (window.scrollY > 230) {
 			isSticky.value = true;
@@ -64,8 +66,8 @@ const logout = () => {
 								<RouterLink class="nav-link" to="/bulletin/main">所有公告</RouterLink>
 							</li>
 							<li class="nav-item">
-								<div v-if="this.userName != null">
-									<a v-if="this.authorization == 1" class="nav-link"
+								<div v-if="userName != null">
+									<a v-if="authorization == 1" class="nav-link"
 										href="https://database--project.000webhostapp.com/get_log_2.php">({{
 											userName
 										}})</a>
@@ -75,7 +77,7 @@ const logout = () => {
 									<RouterLink class="nav-link" to="/login">登入</RouterLink>
 								</div>
 							</li>
-							<div v-if="this.userName != null">
+							<div v-if="userName != null">
 								<li class="nav-item">
 									<a class="nav-link" href="#" @click="logout">登出</a>
 								</li>

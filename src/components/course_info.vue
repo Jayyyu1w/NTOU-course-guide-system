@@ -112,7 +112,7 @@ export default {
 							<div class="container border">
 								<div class="pr-4 pt-3 mb-4">
 									<div class="text-dark fw-bold fs-4">
-										<h4 class="fw-bolder" style="float:left;">你喜歡這門課嗎?</h4>
+										<h4 class="fw-bolder" style="float:left;">你喜歡我們的頁面嗎?</h4>
 									</div>
 									<br>
 									<br>
