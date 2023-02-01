@@ -63,7 +63,7 @@ export default ({
 </script>
 
 <template>
-	<div class="container" id="courses">
+	<div class="container my-5" id="courses">
 		<div class="text-center">
 			<h3 class="fw-bolder">所有課程</h3>
 		</div>

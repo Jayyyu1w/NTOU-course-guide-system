@@ -6,8 +6,7 @@ import indexhot from '../components/index_hot.vue'
 </script>
 
 <template>
-	<div id="navi"><navbar /></div>
-	<div id="fixpos"></div>
+	<navbar />
 	<section id="content">
 		<div class="container my-5">
 			<div class="row">
@@ -49,3 +48,13 @@ import indexhot from '../components/index_hot.vue'
 		</div>
 	</section>
 </template>
+
+<style scoped>
+#navi {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+}
+</style>

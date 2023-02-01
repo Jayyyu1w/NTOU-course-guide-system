@@ -64,7 +64,7 @@ export default ({
 </script>
 
 <template>
-	<div class="container mt-5">
+	<div class="container my-5">
 		<div class="row">
 			<div class="row">
 				<div class="text-center">
