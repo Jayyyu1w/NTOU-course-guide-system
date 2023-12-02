@@ -19,7 +19,7 @@ const getEvent = function (e) {
 	</vue-cal>
 </template>
 
-<style>
+<style scoped>
 .vuecal--month-view .vuecal__cell {
 	height: 80px;
 }

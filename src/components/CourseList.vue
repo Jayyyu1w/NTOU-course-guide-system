@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
+import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router'
 
@@ -26,33 +26,26 @@ const searching = (() => {
 	console.log(display_course);
 });
 
-const changeWeb = (dis) => {
-	router.push({ path: '/course/info/' + dis.course_ID, query: { course_ID: dis.course_ID, class: dis.class } });
-};
-
-onMounted(() => {
-	axios.get("https://database--project.000webhostapp.com/course.php")
-		.then((res) => {
-			course_info.value = res.data;
-			console.log(course_info.value);
-			for (let item of course_info.value) {
-				if (item.grade == 1)
-					grade_1.push(item);
-				if (item.grade == 2)
-					grade_2.push(item);
-				if (item.grade == 3)
-					grade_3.push(item);
-				if (item.grade == 4)
-					grade_4.push(item);
-			}
-			display_course.value = grade_1;
-			console.log(course_info.value);
-			console.log(grade_1);
-			console.log(grade_2);
-			console.log(grade_3);
-			console.log(grade_4);
-		})
-})
+axios.get("https://database--project.000webhostapp.com/course.php")
+	.then((res) => {
+		course_info.value = res.data;
+		console.log('course_info', course_info.value);
+		for (let item of course_info.value) {
+			if (item.grade == 1)
+				grade_1.value.push(item);
+			if (item.grade == 2)
+				grade_2.value.push(item);
+			if (item.grade == 3)
+				grade_3.value.push(item);
+			if (item.grade == 4)
+				grade_4.value.push(item);
+		}
+		display_course.value = grade_1.value;
+		console.log('grade_1', grade_1.value);
+		console.log('grade_2', grade_2.value);
+		console.log('grade_3', grade_3.value);
+		console.log('grade_4', grade_4.value);
+	})
 </script>
 
 <template>
@@ -99,43 +92,43 @@ onMounted(() => {
 				</span>
 			</span>
 		</div>
-		<div>
+		<div class="mt-4">
 			<ul class="list-group course_style" id="course_list">
 				<div v-for="dis of display_course">
-					<div @click="changeWeb(dis)">
+					<RouterLink :to="{
+						path: `/course/info/${dis.course_ID}`,
+						query: { course_ID: dis.course_ID, class: dis.class }}">
 						<li class="list-group-item" v-if="dis != undefined">
-							<div class="container">
-								<div class="col">
-									<div class="row-md-8 pt-2">
-										<p>
-											<span class="h4">
-												{{ dis.name }}
-											</span>
-											<span class="semester">
-												{{ dis.semester }}
-											</span>
-										</p>
+							<div class="col">
+								<div class="row-md-8 pt-2">
+									<p>
+										<span class="h4">
+											{{ dis.name }}
+										</span>
+										<span class="semester">
+											{{ dis.semester }}
+										</span>
+									</p>
+								</div>
+								<div class="row-md-4">
+									<div>課號：{{ dis.course_ID }}</div>
+									<div>資訊工程學系&nbsp;&nbsp;&nbsp;{{ dis.grade }}&nbsp;&nbsp;&nbsp;{{ dis.class }}
 									</div>
-									<div class="row-md-4">
-										<div>課號：{{ dis.course_ID }}</div>
-										<div>資訊工程學系&nbsp;&nbsp;&nbsp;{{ dis.grade }}&nbsp;&nbsp;&nbsp;{{ dis.class }}
-										</div>
-										<div>
-											學分數：{{ dis.credit }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											授課教師：{{ dis.teacher }}
-										</div>
+									<div>
+										學分數：{{ dis.credit }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										授課教師：{{ dis.teacher }}
 									</div>
 								</div>
 							</div>
 						</li>
-					</div>
+					</RouterLink>
 				</div>
 			</ul>
 		</div>
 	</div>
 </template>
 
-<style>
+<style scoped>
 .course_style {
 	font-size: 16px;
 }

@@ -1,4 +1,6 @@
-<script>
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
@@ -12,66 +14,52 @@ MdEditor.config({
 		},
 	},
 });
-export default {
-	name: 'App',
-	components: {
-		MdEditor
-	},
-	data: function () {
-		return {
-			text: '',
-			class_ID: "",
-			class: "",
-			class_name: "",
-			star: 0,
-			authorization: 0
-		}
-	},
-	created: function () {
-		let getUrlString = location.href;
-		let url = new URL(getUrlString);
-		this.class_ID = url.searchParams.get('course_ID');
-		this.class = url.searchParams.get('class');
-		let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
-		let links2 = "https://database--project.000webhostapp.com/get_hot_avg.php?course_ID=" + this.class_ID + "&class=" + this.class;
-		axios.get(links)
-			.then((res) => {
-				console.log(res);
-				let info = res.data[0];
-				this.text = info['information'];
-				this.class_name = info['name'];
-				this.hot = info['hot'];
-				this.authorization = window.sessionStorage.getItem('authorization');
-				console.log(this.hot);
-			})
-		axios.get(links2)
-			.then((res) => {
-				var avg = res.data[0].avg;
-				this.star = avg;
-				console.log(avg);
-			})
 
-	},
-	methods: {
-		getAvg: function () {
-			var avg = this.star / 1;
-			this.star = (avg * 1).toFixed(2);
-			return "star" + this.star;
-		},
-		edit: function () {
-			this.$router.push({ path: '/course/info/' + this.class_ID + '/edit', query: { course_ID: this.class_ID, class: this.class } });
-			//course_ID=' + this.class_ID + "&class=" + this.class;
-		},
-		clickYes: function () {
-			document.getElementById('textDisplay').innerHTML = "<h4 class='fw-bolder'>感謝您的喜歡</h4>";
-		},
-		clickNo: function () {
-			document.getElementById('textDisplay').innerHTML = "<h4 class='fw-bolder'>感謝您的回覆<br>我們會持續改進</h4>";
-		}
-	},
-	mounted: function () {
+const router = useRouter();
+const text = ref('');
+const class_ID = ref("");
+const course_class = ref("");
+const class_name = ref("");
+const star = ref(0);
+const authorization = ref(0);
+const getUrlString = location.href;
+const url = new URL(getUrlString);
 
-	},
+class_ID.value = url.searchParams.get('course_ID');
+course_class.value = url.searchParams.get('class');
+
+const links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + class_ID.value + "&class=" + course_class.value;
+const links2 = "https://database--project.000webhostapp.com/get_hot_avg.php?course_ID=" + class_ID.value + "&class=" + course_class.value;
+axios.get(links).then((res) => {
+	console.log('res',res.data);
+	let info = res.data;
+	info = info[0]
+	text.value = info['information'];
+	class_name.value = info['name'];
+	authorization.value = window.sessionStorage.getItem('authorization');
+	console.log(authorization.value);
+})
+axios.get(links2).then((res) => {
+		var avg = res.data[0].avg;
+		star.value = avg;
+		console.log(avg);
+	}).catch((err) => {
+		console.log(err);
+	})
+const getAvg = () => {
+	var avg = star / 1;
+	star.value = (avg * 1).toFixed(2);
+	return "star" + star;
+}
+const edit = () => {
+	router.push({ path: '/course/info/' + this.class_ID + '/edit', query: { course_ID: this.class_ID, class: this.class } });
+	//course_ID=' + this.class_ID + "&class=" + this.class;
+}
+const clickYes = () => {
+	document.getElementById('textDisplay').innerHTML = "<h4 class='fw-bolder'>感謝您的喜歡</h4>";
+}
+const clickNo = () => {
+	document.getElementById('textDisplay').innerHTML = "<h4 class='fw-bolder'>感謝您的回覆<br>我們會持續改進</h4>";
 }
 </script>
 
@@ -86,7 +74,7 @@ export default {
 				</div>
 			</div>
 		</div>
-		<div class="container mt-5">
+		<div class="container my-5">
 			<div class="row-md-12">
 				<div class="col-md-12">
 					<div class="row">
@@ -99,12 +87,13 @@ export default {
 								</div>
 								<div v-if="this.authorization == 1">
 									<div class="text-center">
-										<button type="button" class="btn btn-secondary" @click="edit" style="float:center">編輯課程</button>
+										<button type="button" class="btn btn-secondary" @click="edit"
+											style="float:center">編輯課程</button>
 									</div>
 								</div>
 								<div id="md-editor" class="container">
-									<md-editor language="zh-TW" v-model="text" preview-only="true" :toolbarsExclude="toolbarsExclude"
-										maxLength=5000 />
+									<md-editor language="zh-TW" v-model="text" preview-only="true"
+										:toolbarsExclude="toolbarsExclude" maxLength=5000 />
 								</div>
 							</div>
 						</div>
@@ -118,7 +107,8 @@ export default {
 									<br>
 									<div class="row" id="textDisplay">
 										<div class="col-md-1">
-											<button type="button" class="btn btn-success" id="yes" @click="clickYes">是</button>
+											<button type="button" class="btn btn-success" id="yes"
+												@click="clickYes">是</button>
 										</div>
 										<div class="offset-md-2 col-md-1">
 											<button type="button" class="btn btn-danger" id="no" @click="clickNo">否</button>
@@ -129,21 +119,21 @@ export default {
 								<div class="pr-4 pt-3 mb-4">
 									<div class="text-dark fw-bold fs-4">
 										<h4 class="fw-bolder" style="float:left;" v-bind:id="getAvg()">
-											學生評價:&nbsp&nbsp{{ this.star }}&nbsp&nbsp</h4>
+											學生評價:&nbsp&nbsp{{ star }}&nbsp&nbsp</h4>
 										<div class="rating" style="float:left;">
-											<div v-if="this.star >= 5"><label for="5" class="display">☆</label></div>
+											<div v-if="star >= 5"><label for="5" class="display">☆</label></div>
 											<div v-else><label for="5" class="no_display">☆</label></div>
 
-											<div v-if="this.star >= 4"><label for="4" class="display">☆</label></div>
+											<div v-if="star >= 4"><label for="4" class="display">☆</label></div>
 											<div v-else><label for="4" class="no_display">☆</label></div>
 
-											<div v-if="this.star >= 3"><label for="3" class="display">☆</label></div>
+											<div v-if="star >= 3"><label for="3" class="display">☆</label></div>
 											<div v-else><label for="3" class="no_display">☆</label></div>
 
-											<div v-if="this.star >= 2"><label for="2" class="display">☆</label></div>
+											<div v-if="star >= 2"><label for="2" class="display">☆</label></div>
 											<div v-else><label for="2" class="no_display">☆</label></div>
 
-											<div v-if="this.star >= 1"><label for="1" class="display">☆</label></div>
+											<div v-if="star >= 1"><label for="1" class="display">☆</label></div>
 											<div v-else><label for="1" class="no_display">☆</label></div>
 										</div>
 										<img style="width: 100px;"

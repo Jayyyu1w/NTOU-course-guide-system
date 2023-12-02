@@ -5,37 +5,48 @@ import BulletinView from '@/views/BulletinView.vue'
 import LoginView from '@/views/LoginView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import CourseView from '@/views/CourseView.vue'
+import CourseList from '@/views/CourseListView.vue'
+import MainPage from '@/views/MainPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'Home',
-      component: HomeView
+      path: '/login',
+      name: 'Login',
+      component: LoginView,
     },
     {
-      path: '/course',
-      name: 'Course',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: AllCourseView,
+      path: '/',
+      name: 'Home',
+      component: HomeView,
       children: [
         {
-          path: 'all',
-          name: 'All',
-          component: () => import('../components/all_course.vue')
+          path: '',
+          name: 'MainPage',
+          component: MainPage,
         },
         {
-          path: 'info/:id',
-          name: 'Info',
-          component: CourseView,
-        },
-        {
-          path: 'info/:id/edit',
-          name: 'InfoEdit',
-          component: () => import('../components/course_edit.vue')
+          path: '/course',
+          name: 'Course',
+          component: AllCourseView,
+          children: [
+            {
+              path: '',
+              name: 'CourseList',
+              component: CourseList,
+            },
+            {
+              path: 'info/:id',
+              name: 'Info',
+              component: CourseView,
+            },
+            {
+              path: 'info/:id/edit',
+              name: 'InfoEdit',
+              component: () => import('@/components/course_edit.vue')
+            }
+          ]
         }
       ]
     },
@@ -47,26 +58,21 @@ const router = createRouter({
         {
           path: 'main',
           name: 'Main',
-          component: () => import('../components/bulletin.vue')
+          component: () => import('@/components/bulletin.vue')
         },
         {
           path: 'edit',
           name: 'BulletinEdit',
-          component: () => import('../components/bulletin_edit.vue')
+          component: () => import('@/components/bulletin_edit.vue')
         }
       ],
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: LoginView,
     },
     { //404Error
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: NotFoundView,
     }
-  ]
+  ],
 })
 
 export default router
