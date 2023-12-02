@@ -1,4 +1,5 @@
-<script>
+<script setup>
+import { ref, reactive, onMounted, onSave } from 'vue';
 import axios from 'axios';
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
@@ -13,49 +14,32 @@ MdEditor.config({
   },
 });
 
-export default {
-  name: 'App',
-  components: {
-    MdEditor
-  },
-  data() {
-    return {
-      text: '',
-      toobars: ['bold', 'underline', 'italic', 'strikeThrough',
-        'sub', 'sup', 'quote', 'unorderedList', 'orderedList', 'codeRow',
-        'code', 'link', 'image', 'table', 'revoke',
-        'next', 'save', 'pageFullscreen', 'fullscreen',
-        'preview', 'htmlPreview', 'github'],
-      toolbarsExclude: ['image', 'htmlPreview', 'github'],
-    }
-  },
-  created: function () {
-    let getUrlString = location.href;
-    let url = new URL(getUrlString);
-    this.class_ID = url.searchParams.get('course_ID');
-    this.class = url.searchParams.get('class');
-    let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
-    axios.get(links).then((res) => {
-      let ret = res.data;
-      console.log(ret);
-      this.text = ret[0].information;
-    });
-  },
-  methods: {
-    onSave: function (v, h) {
-      console.log(v);
-      let postData = { "text": v };
-      let postd = JSON.stringify(postData);
-      console.log(postd);
-      let links = "https://database--project.000webhostapp.com/course_md_edit.php?course_ID=" + this.class_ID + "&class=" + this.class;
-      axios.post(links, postd).then((res) => {
-        
-      });
-    },
-    mounted: function () {
-    },
-  }
-}
+const text = ref('')
+const toolbarsExclude = ['image', 'htmlPreview', 'github']
+
+onMounted(() => {
+  let getUrlString = location.href;
+  let url = new URL(getUrlString);
+  this.class_ID = url.searchParams.get('course_ID');
+  this.class = url.searchParams.get('class');
+  let links = "https://database--project.000webhostapp.com/get_information.php?course_ID=" + this.class_ID + "&class=" + this.class;
+  axios.get(links).then((res) => {
+    let ret = res.data;
+    console.log(ret);
+    this.text = ret[0].information;
+  });
+})
+
+onSave(() => {
+  console.log(this.text);
+  let postData = { "text": this.text };
+  let postd = JSON.stringify(postData);
+  console.log(postd);
+  let links = "https://database--project.000webhostapp.com/course_md_edit.php?course_ID=" + this.class_ID + "&class=" + this.class;
+  axios.post(links, postd).then((res) => {
+    console.log(res);
+  });
+})
 </script>
 
 <template>

@@ -4,6 +4,7 @@ import AllCourseView from '@/views/AllCourseView.vue'
 import BulletinView from '@/views/BulletinView.vue'
 import LoginView from '@/views/LoginView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import CourseView from '@/views/CourseView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,7 +30,7 @@ const router = createRouter({
         {
           path: 'info/:id',
           name: 'Info',
-          component: () => import('../components/course_detail.vue'),
+          component: CourseView,
         },
         {
           path: 'info/:id/edit',

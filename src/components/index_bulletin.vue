@@ -1,34 +1,23 @@
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-export default ({
-	data: function () {
-		return {
-			bulletin_info: [],
-			pageSize: 5,
-			curPage: 1,
-			cut: [],
-		}
-	},
-	created: function () {
-		axios.get("https://database--project.000webhostapp.com/bulletin.php")
-			.then((res) => {
-				this.bulletin_info = res.data;
-				for (let item of this.bulletin_info) {
-					item.headid = "head" + item.bulletin_ID;
-					item.bodyid = "body" + item.bulletin_ID;
-					item.actbody = "#" + item.bodyid;
-				}
-				this.cut = this.bulletin_info.slice((this.curPage * this.pageSize) - this.pageSize, (this.curPage * this.pageSize))
-				console.log(this.totPage);
-			})
-	},
-	methods: {
+const bulletin_info = ref([]);
+const pageSize = ref(5);
+const curPage = ref(1);
+const cut = ref([]);
 
-	},
-	mounted: function () {
-
-	}
+onMounted(() => {
+	axios.get("https://database--project.000webhostapp.com/bulletin.php")
+		.then((res) => {
+			bulletin_info.value = res.data;
+			for (let item of bulletin_info.value) {
+				item.headid = "head" + item.bulletin_ID;
+				item.bodyid = "body" + item.bulletin_ID;
+				item.actbody = "#" + item.bodyid;
+			}
+			cut.value = bulletin_info.value.slice((curPage.value * pageSize.value) - pageSize.value, (curPage.value * pageSize.value))
+		})
 });
 </script>
 
@@ -40,7 +29,8 @@ export default ({
 					<div class="accordion-item">
 						<div class="accordion-header" v-bind:id="info.headid">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-								v-bind:data-bs-target="info.actbody" aria-expanded="true" v-bind:aria-controls="info.bodyid">
+								v-bind:data-bs-target="info.actbody" aria-expanded="true"
+								v-bind:aria-controls="info.bodyid">
 								<strong>{{ info.title }}</strong>
 							</button>
 							<div class="row">
@@ -67,8 +57,8 @@ export default ({
 								</div>
 							</div>
 						</div>
-						<div v-bind:id="info.bodyid" class="accordion-collapse collapse" v-bind:aria-labelledby="info.headid"
-							data-bs-parent="#bulletin">
+						<div v-bind:id="info.bodyid" class="accordion-collapse collapse"
+							v-bind:aria-labelledby="info.headid" data-bs-parent="#bulletin">
 							<div class="accordion-body">
 								{{ info.content }}
 							</div>
@@ -80,6 +70,4 @@ export default ({
 	</div>
 </template>
 
-<style>
-
-</style>
+<style></style>

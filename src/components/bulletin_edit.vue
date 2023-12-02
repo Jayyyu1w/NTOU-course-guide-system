@@ -1,85 +1,58 @@
-<script>
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
 
-export default ({
-	data: function () {
-		return {
-			submit: {
-				title: "",
-				content: "",
-				//course_ID: 1,
-				class: 'A',
-				class_name: "",
-				//sender: "",
-				receiver: "",
-				time: "",
-				bulletin_ID: ""
-			},
-			courses: [],
-			sz: 0
-		}
-	},
-	created: function () {
-		axios.get("https://database--project.000webhostapp.com/course.php")
-			.then((res) => {
-				this.courses = res.data;
-			})
-		/*axios.get("http://localhost:3000/bulletin")
-				.then((res) => {
-						this.sz=res.data.length;
-						console.log(this.sz);
-				}) // modify:get this bulletin_ID from php to update*/
-	},  // add a new bulletin:get count of bulledtin to sz, add new bulletin(sz+1)
-	methods: {
-		click: function () {
-			let yy = new Date().getFullYear();
-			let mm = new Date().getMonth() + 1;
-			let dd = new Date().getDate();
-			let hh = new Date().getHours();
-			let mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes();
-			let ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds();
-			this.submit.title = this.$refs.title.value;
-			this.submit.class_name = this.$refs.class_name.value;
-			this.submit.sender = window.sessionStorage.getItem('userName');;
-			this.submit.receiver = this.$refs.receiver.value;
-			this.submit.class = this.$refs.class.value;
-			this.submit.content = this.$refs.content.value;
-			this.submit.time = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss
-			this.submit.bulletin_ID = String(this.sz + 1); // if you modify this billetin, why sz+1
-			var out = JSON.stringify(this.submit);
-			console.log(out);
-			axios.post('https://database--project.000webhostapp.com/bulletin_add.php', out).then((res) => {
-				console.log(res);
-				let ret = res.data;
-				if (ret == 'success') {
-					alert('新增成功');
-					this.$router.replace('/bulletin');
-				}
-				else {
-					alert(ret);
-				}
-			});
-		}
-	},
-	mounted: function () {
-
-	}
+const submit = reactive({
+	title: "",
+	content: "",
+	//course_ID: 1,
+	class: 'A',
+	class_name: "",
+	//sender: "",
+	receiver: "",
+	time: "",
+	bulletin_ID: ""
 });
+
+const click = (() => {
+	let yy = new Date().getFullYear();
+	let mm = new Date().getMonth() + 1;
+	let dd = new Date().getDate();
+	let hh = new Date().getHours();
+	let mf = new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes();
+	let ss = new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds();
+	submit.time = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss;
+	var out = JSON.stringify(submit);
+	console.log(out);
+	var links = "https://database--project.000webhostapp.com/bulletin_add.php";
+	axios.post(links, out).then((res) => {
+		console.log(res);
+		//router.replace({ path: '/course/info/' + class_ID.value, query: { course_ID: class_ID.value, class: classes.value }});
+	});
+})
+
+onMounted(() => {
+	axios.get("https://database--project.000webhostapp.com/bulletin.php")
+		.then((res) => {
+			let ret = res.data;
+			console.log(ret);
+		});
+})
 </script>
 
 <template>
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col">
-			<form>
+			<form :model="submit">
 				<div class="mb-1">
 					<label class="form-label">標題</label>
-					<input type="text" class="form-control" ref="title" aria-describedby="title_help">
+					<input type="text" class="form-control" v-model="submit.title" aria-describedby="title_help">
 					<div id="title_help" class="form-text">請輸入公告標題</div>
 				</div>
 				<div class="mb-3">
 					<label class="form-label">課程名稱</label>
-					<select class="form-select" aria-label="Default select example" ref="class_name">
+					<select class="form-select" aria-label="Default select example" v-model="submit.class_name">
 						<option selected></option>
 						<option v-bind:value="course.name" v-for="course in courses">{{ course.name }}</option>
 					</select>
@@ -87,7 +60,7 @@ export default ({
 				</div>
 				<div class="mb-3">
 					<label class="form-label">班級</label>
-					<select class="form-select" aria-label="Default select example" ref="class">
+					<select class="form-select" aria-label="Default select example" v-model="submit.class">
 						<option selected></option>
 						<option value="A">A</option>
 						<option value="B">B</option>
@@ -101,12 +74,12 @@ export default ({
                 </div> -->
 				<div class="mb-3">
 					<label class="form-label">接收對象</label>
-					<input type="text" class="form-control" ref="receiver" aria-describedby="receiver_help">
+					<input type="text" class="form-control" v-model="submit.receiver" aria-describedby="receiver_help">
 					<div id="receiver_help" class="form-text">請輸入接收對象</div>
 				</div>
 				<div class="mb-3">
 					<label class="form-label">內容</label>
-					<textarea class="form-control" ref="content" rows="10" aria-describedby="content_help"></textarea>
+					<textarea class="form-control" v-model="submit.content" rows="10" aria-describedby="content_help"></textarea>
 					<div id="content_help" class="form-text">請輸入內容</div>
 				</div>
 			</form>
@@ -116,6 +89,4 @@ export default ({
 	</div>
 </template>
 
-<style>
-
-</style>
+<style></style>

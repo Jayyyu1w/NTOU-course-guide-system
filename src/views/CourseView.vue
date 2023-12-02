@@ -1,7 +1,7 @@
 <script setup>
-import couinf from '../components/course_info.vue';
-import couinfmes from '../components/course_info_messageboard.vue';
-import couinfmesadd from '../components/course_info_messageadd.vue';
+import couinf from '@/components/course_info.vue';
+import couinfmes from '@/components/course_info_messageboard.vue';
+import couinfmesadd from '@/components/course_info_messageadd.vue';
 </script>
 
 <template>

@@ -1,36 +1,30 @@
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
-export default ({
-	data: function () {
-		return {
-			curPicture: "",
-			mess_info: [],
-			imgs: ['mark (1).png', 'mark (2).png', 'mark (3).png', 'mark (4).png', 'mark (5).png', 'mark (6).png', 'mark (7).png', 'mark (8).png', 'mark (9).png'],
-		}
-	},
-	created: function () {
-		let getUrlString = location.href;
-		let url = new URL(getUrlString);
-		this.class_ID = url.searchParams.get('course_ID');
-		this.class = url.searchParams.get('class');
-		let links = "https://database--project.000webhostapp.com/get_message.php?course_ID=" + this.class_ID + "&class=" + this.class;
-		axios.get(links) //發出http請求
-			.then((res) => {
-				console.log(res.data);
-				this.mess_info = res.data;
-			})
-	},
-	methods: {
-		getPicture: function () {
-			var idx = Math.floor(Math.random() * 9);
-			return "https://database--project.000webhostapp.com/img/" + this.imgs[idx];
-		},
-	},
-	mounted: function () {
+const course_ID = ref("");
+const course = ref("");
+const curPicture = ref("");
+const mess_info = ref([]);
+const imgs = ['mark (1).png', 'mark (2).png', 'mark (3).png', 'mark (4).png', 'mark (5).png', 'mark (6).png', 'mark (7).png', 'mark (8).png', 'mark (9).png']
 
-	}
-});
+const getPicture = () => {
+	var idx = Math.floor(Math.random() * 9);
+	return "https://database--project.000webhostapp.com/img/" + imgs[idx];
+};
+
+onMounted(() => {
+	let getUrlString = location.href;
+	let url = new URL(getUrlString);
+	course_ID.value = url.searchParams.get('course_ID');
+	course.value = url.searchParams.get('class');
+	let links = "https://database--project.000webhostapp.com/get_message.php?course_ID=" + course_ID.value;
+	axios.get(links) //發出http請求
+		.then((res) => {
+			console.log(res.data);
+			mess_info.value = res.data;
+		})
+})
 </script>
 
 <template>

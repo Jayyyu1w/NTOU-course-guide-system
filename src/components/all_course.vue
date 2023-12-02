@@ -1,65 +1,58 @@
-<script>
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-export default ({
-	data: function () {
-		return {
-			course_info: [],
-			grade_1: [],
-			grade_2: [],
-			grade_3: [],
-			grade_4: [],
-			display_course: [],
-			no_course: false,
-			keyword: ""
-		}
-	},
-	created: function () {
-		axios.get("https://database--project.000webhostapp.com/course.php")
-			.then((res) => {
-				this.course_info = res.data;
-				console.log(this.course_info);
-				for (let item of this.course_info) {
-					if (item.grade == 1)
-						this.grade_1.push(item);
-					if (item.grade == 2)
-						this.grade_2.push(item);
-					if (item.grade == 3)
-						this.grade_3.push(item);
-					if (item.grade == 4)
-						this.grade_4.push(item);
-				}
-				this.display_course = this.grade_1;
-				console.log(this.course_info);
-				console.log(this.grade_1);
-				console.log(this.grade_2);
-				console.log(this.grade_3);
-				console.log(this.grade_4);
-			})
-	},
-	methods: {
-		searching: function () {
-			this.display_course = [];
-			for (let item of this.course_info) {
-				if (this.keyword == "") {
-					this.display_course.push(item);
-				} else if (item.name.search(this.keyword) != -1) {
-					this.display_course.push(item);
-				}
-			}
-			console.log(this.display_course);
-		},
-		changeWeb: function (dis) {
-			this.$router.push({ path: '/course/info/' + dis.course_ID, query: { course_ID: dis.course_ID, class: dis.class } });
-		},
-	},
-	mounted: function () {
+const course_info = ref([])
+const grade_1 = ref([])
+const grade_2 = ref([])
+const grade_3 = ref([])
+const grade_4 = ref([])
+const display_course = ref([])
+const no_course = ref(false)
+const keyword = ref("")
 
+const searching = (() => {
+	display_course.value = [];
+	for (let item of course_info) {
+		if (keyword == "") {
+			display_course.push(item);
+		} else if (item.name.search(keyword) != -1) {
+			display_course.push(item);
+		}
 	}
+	console.log(display_course);
 });
+
+const changeWeb = (dis) => {
+	router.push({ path: '/course/info/' + dis.course_ID, query: { course_ID: dis.course_ID, class: dis.class } });
+};
+
+onMounted(() => {
+	axios.get("https://database--project.000webhostapp.com/course.php")
+		.then((res) => {
+			course_info.value = res.data;
+			console.log(course_info.value);
+			for (let item of course_info.value) {
+				if (item.grade == 1)
+					grade_1.push(item);
+				if (item.grade == 2)
+					grade_2.push(item);
+				if (item.grade == 3)
+					grade_3.push(item);
+				if (item.grade == 4)
+					grade_4.push(item);
+			}
+			display_course.value = grade_1;
+			console.log(course_info.value);
+			console.log(grade_1);
+			console.log(grade_2);
+			console.log(grade_3);
+			console.log(grade_4);
+		})
+})
 </script>
 
 <template>
@@ -70,7 +63,8 @@ export default ({
 		<div class="row mt-3">
 			<div class="col-md-8">
 				<form class="d-flex round-top">
-					<input class="form-control me-2" type="search" placeholder="keyword" v-model="keyword" aria-label="Search">
+					<input class="form-control me-2" type="search" placeholder="keyword" v-model="keyword"
+						aria-label="Search">
 					<button class="btn btn-outline-success" type="button" @click="searching">search</button>
 				</form>
 			</div>

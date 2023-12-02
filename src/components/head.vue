@@ -48,7 +48,7 @@ const logout = () => {
 				<div class="container mt-1 mb-1">
 					<RouterLink class="navbar-brand header_font" to="/">資工課程導覽</RouterLink>
 					<a class="navbar-brand" href="https://www.ntou.edu.tw/" target="_blank">
-						<img src="../assets/ntou.png" width="150" height="30" alt="">
+						<img src="@/assets/ntou.png" width="150" height="30" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 						aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,7 +96,7 @@ const logout = () => {
 #banner .masthead {
 	height: 20vh;
 	min-height: 230px;
-	background-image: url('../assets/banner.png');
+	background-image: url('@/assets/banner.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

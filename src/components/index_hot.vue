@@ -1,54 +1,44 @@
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { RouterView, RouterLink, useRouter } from 'vue-router';
 import axios from 'axios';
 
-export default ({
-	data: function () {
-		return {
-			course_info: [],
-			hotSize: 3,
-			curPage: 1,
-			top_info: [],
-			imgs: ['medal1.png', 'medal2.png', 'medal3.png'],
-			card: ['card_back.png', 'dian_zhi_da_lo.jpeg'],
-			curCard: 'card_back.png'
-		}
-	},
-	created: function () {
-		axios.get("https://database--project.000webhostapp.com/get_hot.php") //發出http請求
-			.then((res) => {
-				this.course_info = res.data;
-				console.log(res.data);
-				this.top_info = this.course_info.slice((this.curPage * this.hotSize) - this.hotSize, (this.curPage * this.hotSize));
-				this.top_info[0].img = this.imgs[0];
-				this.top_info[1].img = this.imgs[1];
-				this.top_info[2].img = this.imgs[2];
-				this.top_info[0].star = this.top_info[0].hot.toFixed(2);
-				this.top_info[1].star = this.top_info[1].hot.toFixed(2);
-				this.top_info[2].star = this.top_info[2].hot.toFixed(2);
-				console.log(this.top_info);
-			})
-	},
-	methods: {
-		changeWeb: function (dis) {
-			this.$router.push({
-				path: '/course/info/' + dis.course_ID,
-				query: {
-					course_ID: dis.course_ID,
-					class: dis.class
-				}
-			})
-		},
-		changeCardFront: function () {
-			this.curCard = this.card[1];
-		},
-		changeCardBack: function () {
-			this.curCard = this.card[0];
-		}
-	},
-	mounted: function () {
+const router = useRouter();
+const course_info = ref([]);
+const hotSize = ref(3);
+const curPage = ref(1);
+const top_info = ref([]);
+const imgs = ref(['medal1.png', 'medal2.png', 'medal3.png']);
+const card = ref(['card_back.png', 'dian_zhi_da_lo.jpeg']);
+const curCard = ref('card_back.png');
 
-	}
+const changeWeb = (dis) => {
+	router.push({ path: '/course/info/' + dis.course_ID, query: { course_ID: dis.course_ID, class: dis.class } });
+};
+
+const changeCardFront = (() => {
+	curCard.value = card[1];
 });
+
+const changeCardBack = (() => {
+	curCard.value = card[0];
+});
+
+onMounted(() => {
+	axios.get("https://database--project.000webhostapp.com/get_hot.php") //發出http請求
+		.then((res) => {
+			course_info.value = res.data;
+			console.log(res.data);
+			top_info.value = course_info.value.slice((curPage.value * hotSize.value) - hotSize.value, (curPage.value * hotSize.value));
+			top_info[0].img = imgs[0];
+			top_info[1].img = imgs[1];
+			top_info[2].img = imgs[2];
+			top_info[0].star = top_info[0].hot.toFixed(2);
+			top_info[1].star = top_info[1].hot.toFixed(2);
+			top_info[2].star = top_info[2].hot.toFixed(2);
+			console.log(top_info.value);
+		})
+})
 </script>
 
 <template>

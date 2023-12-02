@@ -1,46 +1,35 @@
-<script>
+<script setup>
+import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
 
-export default ({
-	data: function () {
-		return {
-			submit: {
-				account: "",
-				password: "",
-			},
-		}
-	},
-	methods: {
-		click: function () {
-			this.submit.account = this.$refs.account.value;
-			this.submit.password = this.$refs.password.value;
-			var out = JSON.stringify(this.submit);
-			console.log(out);
-			var name, authorization;
-			axios.post('https://database--project.000webhostapp.com/login.php', out).then((res) => {
-				console.log(res.data);
-				var input = res.data;
-				console.log(input);
-				if (input == '登入失敗!') {
-					alert('帳號或密碼錯誤!');
-					return;
-				}
-				name = input.user_name;
-				authorization = input.authorization;
-				console.log(name);
-				console.log(authorization);
-				window.sessionStorage.setItem("userName", name);
-				window.sessionStorage.setItem("authorization", authorization);
-				alert(`歡迎${name}登入`);
-				this.$router.push({ path: '/' })
-			});
-			//console.log(window.sessionStorage);
-		}
-	},
-	mounted: function () {
-
-	},
+const submit = reactive({
+	account: "",
+	password: "",
 });
+
+const click = (() => {
+	let out = JSON.stringify(submit);
+	console.log(out);
+	let name, authorization;
+	axios.post('https://database--project.000webhostapp.com/login.php', out).then((res) => {
+		console.log(res.data);
+		var input = res.data;
+		console.log(input);
+		if (input == '登入失敗!') {
+			alert('帳號或密碼錯誤!');
+			return;
+		}
+		name = input.user_name;
+		authorization = input.authorization;
+		console.log(name);
+		console.log(authorization);
+		window.sessionStorage.setItem("userName", name);
+		window.sessionStorage.setItem("authorization", authorization);
+		alert(`歡迎${name}登入`);
+		this.$router.push({ path: '/' })
+	});
+	//console.log(window.sessionStorage);
+})
 </script>
 
 <template>
@@ -52,12 +41,12 @@ export default ({
 						<h2>登入</h2>
 						<p>請輸入帳號密碼</p>
 					</div>
-					<form id="Login">
+					<form id="Login" :model="submit">
 						<div class="form-group">
-							<input type="text" ref="account" class="form-control" id="inputEmail" placeholder="User Name">
+							<input type="text" v-model="submit.account" class="form-control" id="inputEmail" placeholder="User Name">
 						</div>
 						<div class="form-group">
-							<input type="password" ref="password" class="form-control" id="inputPassword" placeholder="Password">
+							<input type="password" v-model="submit.password" class="form-control" id="inputPassword" placeholder="Password">
 						</div>
 					</form>
 					<button type="submit" class="btn btn-primary" @click="click">登入</button>

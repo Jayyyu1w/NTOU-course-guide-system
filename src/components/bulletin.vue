@@ -1,65 +1,59 @@
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { RouterView, RouterLink, useRouter } from 'vue-router';
 import axios from 'axios';
 
-export default ({
-	data: function () {
-		return {
-			bulletin_info: [],
-			totBulletin: 0,
-			pageSize: 10,
-			curPage: 1,
-			cut: [],
-			totPage: 0,
-			authorization: 0,
-			bulletin_ID: 0,
-			userName: window.sessionStorage.getItem('userName'),
-		}
-	},
-	created: function () {
-		//console.log(this.authorization);
-		axios.get("https://database--project.000webhostapp.com/bulletin.php")
-			.then((res) => {
-				this.bulletin_info = res.data;
-				this.bulletin_ID = this.bulletin_info[0].bulletin_ID;
-				for (let item of this.bulletin_info) {
-					item.headid = "head" + item.bulletin_ID;
-					item.bodyid = "body" + item.bulletin_ID;
-					item.actbody = "#" + item.bodyid;
-					this.totBulletin += 1;
-				}
-				this.slice(1);
-				this.totPage = Math.ceil(this.totBulletin / this.pageSize);
-				console.log(this.totPage);
-				this.authorization = window.sessionStorage.getItem('authorization');
-				console.log(this.authorization);
-			})
-	},
-	methods: {
-		slice: function (cur) {
-			window.scrollTo(0, 0);
-			console.log(cur);
-			this.curPage = cur;
-			this.cut = this.bulletin_info.slice((this.curPage * this.pageSize) - this.pageSize, (this.curPage * this.pageSize))
-		},
-		del_bulletin: function () {
-			console.log("delete");
-			let ret = JSON.stringify({ "bulletin_ID": this.bulletin_ID });
-			axios.post("https://database--project.000webhostapp.com/bulletin_delete.php", ret)
-				.then((res) => {
-					console.log(res.data);
-					if (res.data == "success") {
-						alert("刪除成功");
-						this.$router.replace('/bulletin/main');
-					}
-					else {
-						alert("刪除失敗");
-					}
-				})
-		}
-	},
-	mounted: function () {
+const router = useRouter();
 
-	}
+const bulletin = ref([]);
+const totBulletin = ref(0);
+const pageSize = ref(10);
+const curPage = ref(1);
+const cut = ref([]);
+const totPage = ref(0);
+const authorization = ref(0);
+const bulletin_ID = ref(0);
+const userName = ref(window.sessionStorage.getItem('userName'));
+
+const slice = ((cur) => {
+	window.scrollTo(0, 0);
+	console.log(cur);
+	curPage.value = cur;
+	cut.value = bulletin.value.slice((curPage.value * pageSize.value) - pageSize.value, (curPage.value * pageSize.value))
+});
+
+const del_bulletin = (() => {
+	console.log("delete");
+	let ret = JSON.stringify({ "bulletin_ID": bulletin_ID.value });
+	axios.post("https://database--project.000webhostapp.com/bulletin_delete.php", ret)
+		.then((res) => {
+			console.log(res.data);
+			if (res.data == "success") {
+				alert("刪除成功");
+				router.replace('/bulletin/main');
+			}
+			else {
+				alert("刪除失敗");
+			}
+		})
+})
+
+onMounted(() => {
+	axios.get("https://database--project.000webhostapp.com/bulletin.php")
+		.then((res) => {
+			bulletin.value = res.data;
+			totBulletin.value = bulletin.value.length;
+			for (let item of bulletin.value) {
+				item.headid = "head" + item.bulletin_ID;
+				item.bodyid = "body" + item.bulletin_ID;
+				item.actbody = "#" + item.bodyid;
+			}
+			slice(1);
+			totPage.value = Math.ceil(totBulletin.value / pageSize.value);
+			console.log(totPage.value);
+			authorization.value = window.sessionStorage.getItem('authorization');
+			console.log(authorization.value);
+		})
 });
 </script>
 
@@ -81,7 +75,8 @@ export default ({
 						<div class="accordion-item">
 							<div class="accordion-header" v-bind:id="info.headid">
 								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-									v-bind:data-bs-target="info.actbody" aria-expanded="true" v-bind:aria-controls="info.bodyid">
+									v-bind:data-bs-target="info.actbody" aria-expanded="true"
+									v-bind:aria-controls="info.bodyid">
 									<strong>{{ info.title }}</strong>
 								</button>
 								<div class="row">
@@ -107,13 +102,13 @@ export default ({
 										</div>
 									</div>
 									<div class="col-md-2 edit_icon">
-										<button v-if="userName == 'administrator'" class="del_button" @click="del_bulletin"><img
-												src="../assets/trash.png" width="20"></button>
+										<button v-if="userName == 'administrator'" class="del_button"
+											@click="del_bulletin"><img src="../assets/trash.png" width="20"></button>
 									</div>
 								</div>
 							</div>
-							<div v-bind:id="info.bodyid" class="accordion-collapse collapse" v-bind:aria-labelledby="info.headid"
-								data-bs-parent="#bulletin">
+							<div v-bind:id="info.bodyid" class="accordion-collapse collapse"
+								v-bind:aria-labelledby="info.headid" data-bs-parent="#bulletin">
 								<div class="accordion-body">
 									{{ info.content }}
 								</div>
