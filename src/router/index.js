@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import AllCourseView from '@/views/AllCourseView.vue'
 import BulletinView from '@/views/BulletinView.vue'
 import LoginView from '@/views/LoginView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import CourseView from '@/views/CourseView.vue'
-import CourseList from '@/views/CourseListView.vue'
+import CourseListView from '@/views/CourseListView.vue'
 import MainPage from '@/views/MainPage.vue'
 
 const router = createRouter({
@@ -27,41 +26,27 @@ const router = createRouter({
           component: MainPage,
         },
         {
-          path: '/course',
-          name: 'Course',
-          component: AllCourseView,
-          children: [
-            {
-              path: '',
-              name: 'CourseList',
-              component: CourseList,
-            },
-            {
-              path: 'info/:id',
-              name: 'Info',
-              component: CourseView,
-            },
-            {
-              path: 'info/:id/edit',
-              name: 'InfoEdit',
-              component: () => import('@/components/course_edit.vue')
-            }
-          ]
-        }
-      ]
-    },
-    {
-      path: '/bulletin',
-      name: 'Bulletin',
-      component: BulletinView,
-      children: [
+          path: 'course/list',
+          name: 'CourseList',
+          component: CourseListView,
+        },
         {
-          path: 'main',
+          path: 'course/info/:id',
+          name: 'Info',
+          component: CourseView,
+        },
+        {
+          path: 'info/:id/edit',
+          name: 'InfoEdit',
+          component: () => import('@/components/course_edit.vue')
+        },
+        {
+          path: '/bulletin/list',
           name: 'Main',
           component: () => import('@/components/bulletin.vue')
         },
         {
-          path: 'edit',
+          path: '/bulletin/edit',
           name: 'BulletinEdit',
           component: () => import('@/components/bulletin_edit.vue')
         }
@@ -72,7 +57,7 @@ const router = createRouter({
       name: 'NotFound',
       component: NotFoundView,
     }
-  ],
+  ]
 })
 
 export default router

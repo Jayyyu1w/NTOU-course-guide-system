@@ -10,8 +10,8 @@ const submit = reactive({
 });
 const getUrlString = location.href;
 const url = new URL(getUrlString);
-const class_ID = ref(url.searchParams.get('course_ID'));
-const classes = ref(url.searchParams.get('class'));
+const class_ID = url.searchParams.get('course_ID');
+const classes = url.searchParams.get('class');
 const star = ref(0);
 const sz = ref(0);
 const isLogin = ref(window.sessionStorage.length);
@@ -29,7 +29,7 @@ const click = () => {
 	submit.time = yy + '-' + mm + '-' + dd + ' ' + hh + ':' + mf + ':' + ss;
 	var out = JSON.stringify(submit);
 	console.log(out);
-	var links = "https://database--project.000webhostapp.com/message_add.php?course_ID=" + class_ID.value + "&class=" + classes.value;
+	var links = "https://database--project.000webhostapp.com/message_add.php?course_ID=" + class_ID + "&class=" + classes;
 	axios.post(links, out).then((res) => {
 		console.log(res);
 		reload();

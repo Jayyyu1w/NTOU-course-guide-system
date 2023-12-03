@@ -1,7 +1,6 @@
 <script setup>
-import { ref, watch, onMounted } from 'vue'
-import { useRouter, RouterLink, RouterView } from 'vue-router';
-import { useScroll } from '@vueuse/core'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const userName = ref(null);
@@ -9,20 +8,17 @@ const authorization = ref(null);
 const isSticky = ref(false);
 const isFix = ref(false);
 const el = ref < HTMLElement | null > (null);
-const { x, y, isScrolling, arrivedState, directions } = useScroll(el);
 
-onMounted(() => {
-	userName.value = window.sessionStorage.getItem('userName');
-	authorization.value = window.sessionStorage.getItem('authorization');
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 230) {
-			isSticky.value = true;
-			isFix.value = true;
-		} else {
-			isSticky.value = false;
-			isFix.value = false;
-		}
-	});
+userName.value = window.sessionStorage.getItem('userName');
+authorization.value = window.sessionStorage.getItem('authorization');
+window.addEventListener('scroll', () => {
+	if (window.scrollY > 230) {
+		isSticky.value = true;
+		isFix.value = true;
+	} else {
+		isSticky.value = false;
+		isFix.value = false;
+	}
 });
 
 const logout = () => {
@@ -60,7 +56,7 @@ const logout = () => {
 								<RouterLink class="nav-link active" aria-current="page" to="/">首頁</RouterLink>
 							</li>
 							<li class="nav-item">
-								<RouterLink class="nav-link" to="/course">所有課程</RouterLink>
+								<RouterLink class="nav-link" to="/course/list">所有課程</RouterLink>
 							</li>
 							<li class="nav-item">
 								<RouterLink class="nav-link" to="/bulletin/main">所有公告</RouterLink>
@@ -68,9 +64,9 @@ const logout = () => {
 							<li class="nav-item">
 								<div v-if="userName != null">
 									<a v-if="authorization == 1" class="nav-link"
-										href="https://database--project.000webhostapp.com/get_log_2.php">({{
-											userName
-										}})</a>
+										href="https://database--project.000webhostapp.com/get_log_2.php">
+										({{ userName }})
+									</a>
 									<a v-else class="nav-link" href="#">({{ userName }})</a>
 								</div>
 								<div v-else>
@@ -88,7 +84,7 @@ const logout = () => {
 			</nav>
 		</section>
 	</div>
-	<div ref="el" :class="{ 'FixPos':isFix }"></div>
+	<div ref="el" :class="{ 'FixPos': isFix }"></div>
 </template>
 
 <style>

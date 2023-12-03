@@ -24,6 +24,7 @@ const star = ref(0);
 const authorization = ref(0);
 const getUrlString = location.href;
 const url = new URL(getUrlString);
+const toolbarsExclude = ['emoji', 'link', 'image', 'code', 'save', 'table', 'fullScreen', 'preview', 'mode', 'read'];
 
 class_ID.value = url.searchParams.get('course_ID');
 course_class.value = url.searchParams.get('class');
@@ -85,7 +86,7 @@ const clickNo = () => {
 										課程資訊
 									</div>
 								</div>
-								<div v-if="this.authorization == 1">
+								<div v-if="authorization == 1">
 									<div class="text-center">
 										<button type="button" class="btn btn-secondary" @click="edit"
 											style="float:center">編輯課程</button>

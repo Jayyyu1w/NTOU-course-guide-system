@@ -5,3 +5,6 @@ import CourseList from '@/components/CourseList.vue'
 <template>
     <CourseList />
 </template>
+
+<style scoped>
+</style>

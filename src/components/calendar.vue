@@ -4,6 +4,8 @@ import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import axios from 'axios';
 
+const events = ref([]);
+
 const getEvent = function (e) {
 	let postD = { "year": t.toString(), "month": n.toString() };
 	let postdata = JSON.stringify(postD);
