@@ -36,17 +36,17 @@ const router = createRouter({
           component: CourseView,
         },
         {
-          path: 'info/:id/edit',
+          path: 'course/info/:id/edit',
           name: 'InfoEdit',
           component: () => import('@/components/course_edit.vue')
         },
         {
-          path: '/bulletin/list',
+          path: 'bulletin/list',
           name: 'Main',
-          component: () => import('@/components/bulletin.vue')
+          component: BulletinView,
         },
         {
-          path: '/bulletin/edit',
+          path: 'bulletin/edit',
           name: 'BulletinEdit',
           component: () => import('@/components/bulletin_edit.vue')
         }

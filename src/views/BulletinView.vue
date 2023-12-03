@@ -1,9 +1,9 @@
 <script setup>
-import navbar from '@/components/navbar.vue'
+import bulletin from '@/components/bulletin.vue'
 </script>
 
 <template>
-	<navbar />
+	<bulletin />
 </template>
 
 <style>

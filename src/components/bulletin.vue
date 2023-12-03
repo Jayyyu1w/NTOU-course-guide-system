@@ -63,7 +63,7 @@ onMounted(() => {
 			<div class="row">
 				<div class="text-center">
 					<h3 class="fw-bolder">所有公告</h3>
-					<div v-if="this.authorization == 1">
+					<div v-if="authorization == 1">
 						<RouterLink to="/bulletin/edit"><button type="button" class="btn btn-secondary">發布公告</button>
 						</RouterLink>
 					</div>
@@ -103,7 +103,7 @@ onMounted(() => {
 									</div>
 									<div class="col-md-2 edit_icon">
 										<button v-if="userName == 'administrator'" class="del_button"
-											@click="del_bulletin"><img src="../assets/trash.png" width="20"></button>
+											@click="del_bulletin"><img src="@/assets/trash.png" width="20"></button>
 									</div>
 								</div>
 							</div>
@@ -119,7 +119,7 @@ onMounted(() => {
 			</div>
 			<div class="row mt-5">
 				<ul class="pagination justify-content-center">
-					<li class="page-item" v-for="n in this.totPage">
+					<li class="page-item" v-for="n in totPage">
 						<button class="page-link" @click="slice(n)">{{ n }}</button>
 					</li>
 				</ul>

@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const course_info = ref([])
 const grade_1 = ref([])
@@ -22,6 +25,10 @@ const searching = (() => {
 	}
 	console.log(display_course);
 });
+
+const changeWeb = (dis) => {
+	router.push({ path: '/course/info/' + dis.course_ID, query: { course_ID: dis.course_ID, class: dis.class } })
+};
 
 axios.get("https://database--project.000webhostapp.com/course.php")
 	.then((res) => {
@@ -92,19 +99,13 @@ axios.get("https://database--project.000webhostapp.com/course.php")
 		<div class="mt-4">
 			<ul class="list-group course_style" id="course_list">
 				<div v-for="dis of display_course">
-					<RouterLink :to="{
-						path: `/course/info/${dis.course_ID}`,
-						query: { course_ID: dis.course_ID, class: dis.class }}">
+					<div @click="changeWeb(dis)">
 						<li class="list-group-item" v-if="dis != undefined">
 							<div class="col">
 								<div class="row-md-8 pt-2">
 									<p>
-										<span class="h4">
-											{{ dis.name }}
-										</span>
-										<span class="semester">
-											{{ dis.semester }}
-										</span>
+										<span class="h4">{{ dis.name }}</span>
+										<span class="semester">{{ dis.semester }}</span>
 									</p>
 								</div>
 								<div class="row-md-4">
@@ -118,7 +119,7 @@ axios.get("https://database--project.000webhostapp.com/course.php")
 								</div>
 							</div>
 						</li>
-					</RouterLink>
+					</div>
 				</div>
 			</ul>
 		</div>

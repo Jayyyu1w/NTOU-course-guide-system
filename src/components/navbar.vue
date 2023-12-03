@@ -59,7 +59,7 @@ const logout = () => {
 								<RouterLink class="nav-link" to="/course/list">所有課程</RouterLink>
 							</li>
 							<li class="nav-item">
-								<RouterLink class="nav-link" to="/bulletin/main">所有公告</RouterLink>
+								<RouterLink class="nav-link" to="/bulletin/list">所有公告</RouterLink>
 							</li>
 							<li class="nav-item">
 								<div v-if="userName != null">
