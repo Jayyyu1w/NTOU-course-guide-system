@@ -1,10 +1,10 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const userName = ref(null);
-const authorization = ref(null);
+const userName = ref<string | null>("");
+const authorization = ref<number | null>(0);
 const isSticky = ref(false);
 const isFix = ref(false);
 const el = ref < HTMLElement | null > (null);

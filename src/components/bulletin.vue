@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { RouterView, RouterLink, useRouter } from 'vue-router';
-import axios from 'axios';
+import axios from 'axios'
 
 const router = useRouter();
 

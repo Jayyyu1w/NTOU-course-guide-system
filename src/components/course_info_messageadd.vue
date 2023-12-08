@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import axios from 'axios';
-import { inject,reactive } from 'vue';
+import { ref, inject,reactive } from 'vue';
 
 const reload = inject('reload');
 const submit = reactive({

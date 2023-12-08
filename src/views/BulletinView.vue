@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang=ts>
 import bulletin from '@/components/bulletin.vue'
 </script>
 

@@ -1,18 +1,18 @@
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import axios from 'axios';
 
 const events = ref([]);
 
-const getEvent = function (e) {
+const getEvent = (() => {
 	let postD = { "year": t.toString(), "month": n.toString() };
 	let postdata = JSON.stringify(postD);
 	axios.post('https://database--project.000webhostapp.com/get_calendar.php', postdata).then((res) => {
 		let ret = res.data;
 	});
-};
+});
 </script>
 
 <template>

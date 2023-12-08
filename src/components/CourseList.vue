@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router'
@@ -16,7 +16,7 @@ const keyword = ref("")
 
 const searching = (() => {
 	display_course.value = [];
-	for (let item of course_info) {
+	for (let item in course_info) {
 		if (keyword == "") {
 			display_course.push(item);
 		} else if (item.name.search(keyword) != -1) {

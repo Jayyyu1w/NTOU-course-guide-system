@@ -1,7 +1,6 @@
-<script setup>
-import { ref, reactive, onMounted } from 'vue';
+<script setup lang="ts">
 import axios from 'axios';
-
+import { reactive, onMounted } from 'vue';
 const submit = reactive({
 	title: "",
 	content: "",
@@ -54,7 +53,7 @@ onMounted(() => {
 					<label class="form-label">課程名稱</label>
 					<select class="form-select" aria-label="Default select example" v-model="submit.class_name">
 						<option selected></option>
-						<option v-bind:value="course.name" v-for="course in courses">{{ course.name }}</option>
+						<option :value="course.name" v-for="course in courses">{{ course.name }}</option>
 					</select>
 					<div id="class_help" class="form-text">請選擇課程名稱</div>
 				</div>

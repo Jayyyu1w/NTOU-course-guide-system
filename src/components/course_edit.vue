@@ -1,5 +1,5 @@
-<script setup>
-import { ref, reactive, onMounted, onSave } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, onSave } from 'vue';
 import axios from 'axios';
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'

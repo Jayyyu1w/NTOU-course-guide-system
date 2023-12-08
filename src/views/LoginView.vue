@@ -1,5 +1,5 @@
-<script setup>
-import login from '@/components/login.vue'
+<script setup lang="ts">
+import Login from '@/components/login.vue'
 </script>
 
 <template>
@@ -12,6 +12,5 @@ import login from '@/components/login.vue'
 		</div>
 	</section>
 	<section id="login">
-		<login></login>
+		<Login></Login>
 	</section>
-</template>

@@ -1,6 +1,9 @@
-<script setup>
-import { ref, reactive, onMounted } from 'vue';
+<script setup lang="ts">
+import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 import axios from 'axios';
+
+const router = useRouter();
 
 const submit = reactive({
 	account: "",
@@ -26,7 +29,7 @@ const click = (() => {
 		window.sessionStorage.setItem("userName", name);
 		window.sessionStorage.setItem("authorization", authorization);
 		alert(`歡迎${name}登入`);
-		this.$router.push({ path: '/' })
+		router.push({ path: '/' })
 	});
 	//console.log(window.sessionStorage);
 })
