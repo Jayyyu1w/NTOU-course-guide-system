@@ -5,12 +5,13 @@ import Login from '@/components/login.vue'
 <template>
 	<section id="banner">
 		<div class="masthead">
-			<div class="container">
+			<el-container>
 				<div class="row h-100 align-items-center">
 				</div>
-			</div>
+			</el-container>
 		</div>
 	</section>
 	<section id="login">
 		<Login></Login>
 	</section>
+</template>

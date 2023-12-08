@@ -3,8 +3,8 @@ import { ref, onMounted, onSave } from 'vue';
 import axios from 'axios';
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
-import '@vavt/md-editor-extension/dist/previewTheme/arknights.css';
-import ZH_TW from '@vavt/md-editor-extension/dist/locale/zh-TW';
+import '@vavt/cm-extension/dist/previewTheme/arknights.css';
+import ZH_TW from '@vavt/cm-extension/dist/locale/zh-TW';
 
 MdEditor.config({
   editorConfig: {
