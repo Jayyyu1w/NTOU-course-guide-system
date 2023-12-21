@@ -62,14 +62,13 @@ body {
 	-webkit-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
 	transform: translateX(-50%);
-	background: url('../assets/bg.jpg') no-repeat;
+	background: url('@/assets/bg.jpg') no-repeat;
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-size: cover;
 	background-position: center;
 }
-
 
 .notfound h2 {
 	font-family: 'Montserrat', sans - serif;
